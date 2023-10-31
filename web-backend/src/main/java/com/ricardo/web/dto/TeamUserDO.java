@@ -17,6 +17,8 @@ public class TeamUserDO {
 
     private String avatar;
 
+    private String pwd;
+
     private String email;
 
     private String teamId;

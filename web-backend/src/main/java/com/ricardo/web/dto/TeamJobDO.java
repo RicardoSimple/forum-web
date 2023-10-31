@@ -22,6 +22,7 @@ public class TeamJobDO {
 
     public TeamJob toTeamJob(){
         TeamJob teamJob = new TeamJob();
+        teamJob.setId(this.id);
         teamJob.setJobName(this.jobName);
         teamJob.setTeamId(this.teamId);
         teamJob.setType(this.type);

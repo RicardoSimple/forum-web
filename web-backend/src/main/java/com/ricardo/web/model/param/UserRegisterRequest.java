@@ -1,18 +1,17 @@
-package com.ricardo.web.dto;
+package com.ricardo.web.model.param;
 
 import lombok.Data;
 
-import java.time.LocalDateTime;
-
 @Data
-public class TalentUserDO {
-    private long id;
+public class UserRegisterRequest {
+    // 用户注册参数
+    private String userType;
 
     private String name;
 
-    private String phone;
-
     private String nickName;
+
+    private String phone;
 
     private String avatar;
 
@@ -24,7 +23,8 @@ public class TalentUserDO {
 
     private String education;
 
-    private LocalDateTime gmtCreated;
+    private String teamId;
 
-    private LocalDateTime gmtModified;
+    private String role;
+
 }
