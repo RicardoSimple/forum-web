@@ -1,7 +1,7 @@
 # web-backend
 后端
 ## 项目层次
-——api/controller接口层
+——api接口层
 
 ——service 服务层
 
