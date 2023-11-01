@@ -17,14 +17,14 @@
     </resultMap>
 
     <insert id="insertTeamUser" parameterType="com.ricardo.web.dto.TeamUserDO">
-        INSERT INTO team_user (name, phone, nickname, avatar, email, teamId, role,gmt_created,gmt_modified)
+        INSERT INTO team_user (name, phone, nickname, avatar, email, team_id, role,gmt_created,gmt_modified)
         VALUES (#{name}, #{phone}, #{nickName}, #{avatar}, #{email}, #{teamId}, #{role},now(),now())
     </insert>
 
     <update id="updateTeamUser" parameterType="com.ricardo.web.dto.TeamUserDO">
         UPDATE team_user
         SET name = #{name}, phone = #{phone}, nickname = #{nickName}, avatar = #{avatar}, email = #{email},
-            teamId = #{teamId}, role = #{role},gmt_modified = now()
+            team_id = #{teamId}, role = #{role},gmt_modified = now()
         WHERE id = #{id}
     </update>
 
@@ -44,6 +44,11 @@
     </delete>
 
     <select id="findTeamUserByPhone" parameterType="String" resultType="com.ricardo.web.dto.TeamUserDO">
+        SELECT * FROM team_user
+        WHERE phone = #{phone}
+    </select>
+
+    <select id="findAllTeamUsers" resultType="java.util.List">
         SELECT * FROM team_user
         WHERE phone = #{phone}
     </select>

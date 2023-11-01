@@ -1,5 +1,6 @@
 package com.ricardo.web.dao;
 
+import com.ricardo.web.dto.TalentUserDO;
 import com.ricardo.web.dto.TeamUserDO;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -12,6 +13,7 @@ public interface TeamUserDAO {
     TeamUserDO findTeamUserById(long id);
     List<TeamUserDO> findTeamUsersByTeamId(String teamId);
     void deleteTeamUser(long id);
-
     TeamUserDO findTeamUserByPhone(String phone);
+
+    List<TeamUserDO> findAllTeamUsers();
 }

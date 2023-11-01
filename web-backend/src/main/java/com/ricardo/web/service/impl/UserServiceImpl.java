@@ -5,12 +5,17 @@ import com.ricardo.web.dao.TeamUserDAO;
 import com.ricardo.web.dto.TalentUserDO;
 import com.ricardo.web.dto.TeamUserDO;
 import com.ricardo.web.model.Result;
+import com.ricardo.web.model.TalentUser;
+import com.ricardo.web.model.TeamUser;
 import com.ricardo.web.model.param.UserRegisterRequest;
 import com.ricardo.web.service.UserService;
 import com.ricardo.web.util.Code;
 import com.ricardo.web.util.Const;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -65,5 +70,66 @@ public class UserServiceImpl implements UserService {
         teamUserDAO.insertTeamUser(teamUserDO);
 
         return Result.success(null);
+    }
+
+    @Override
+    public Result getAllUsersByType(String type) {
+        // 1. 判断用户类型
+        if (type==Const.TALENT_TYPE){
+            List<TalentUser> result = new ArrayList<>();
+            // 2. 查
+            List<TalentUserDO> talentUserDOs = talentUserDAO.findAllTalentUsers();
+            // 3. 返回
+            for (int i = 0; i < talentUserDOs.size(); i++) {
+                result.add(talentUserDOs.get(i).toUser());
+            }
+            return Result.success(result);
+        }
+        List<TeamUser> result = new ArrayList<>();
+        List<TeamUserDO> teamUserDOs = teamUserDAO.findAllTeamUsers();
+        // 3. 返回
+        for (int i = 0; i < teamUserDOs.size(); i++) {
+            result.add(teamUserDOs.get(i).toUser());
+        }
+        return Result.success(result);
+
+    }
+
+    @Override
+    public long login(String type,String phone,String pwd) {
+        if(type.equals(Const.TALENT_TYPE)){
+            TalentUserDO user = talentUserDAO.findTalentUserByPhone(phone);
+            if (user==null){
+                return -1;
+            }
+            if(user.getPwd().equals(pwd)){
+                return user.getId();
+            }
+            return -1;
+        }
+        TeamUserDO user = teamUserDAO.findTeamUserByPhone(phone);
+        if(user==null){
+            return -1;
+        }
+        if(user.getPwd().equals(pwd)){
+            return user.getId();
+        }
+        return -1;
+    }
+
+    @Override
+    public Result getUserByIdAndType(String userType, Long id) {
+        if(userType.equals(Const.TALENT_TYPE)){
+            TalentUserDO talentUserById = talentUserDAO.findTalentUserById(id);
+            if(talentUserById==null){
+                return Result.fail(Code.FAIL_NO_DATA,"id错误");
+            }
+            return Result.success(talentUserById.toUser());
+        }
+        TeamUserDO teamUserById = teamUserDAO.findTeamUserById(id);
+        if(teamUserById==null){
+            return Result.fail(Code.FAIL_NO_DATA,"id错误");
+        }
+        return Result.success(teamUserById.toUser());
     }
 }

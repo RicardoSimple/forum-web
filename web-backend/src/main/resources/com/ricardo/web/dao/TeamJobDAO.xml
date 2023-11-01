@@ -1,0 +1,40 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ricardo.web.dao.TeamJobDAO">
+
+    <resultMap id="TeamJobResultMap" type="com.ricardo.web.dto.TeamJobDO">
+        <id column="id" property="id" />
+        <result column="job_name" property="jobName" />
+        <result column="team_id" property="teamId" />
+        <result column="description" property="description" />
+        <result column="content" property="content" />
+        <result column="type" property="type" />
+        <result column="tags" property="tags" />
+    </resultMap>
+
+    <insert id="insertTeamJob" parameterType="com.ricardo.web.dto.TeamJobDO">
+        INSERT INTO team_job (job_name, team_id, description, content, type, tags)
+        VALUES (#{jobName}, #{teamId}, #{description}, #{content}, #{type}, #{tags})
+    </insert>
+
+    <update id="updateTeamJob" parameterType="com.ricardo.web.dto.TeamJobDO">
+        UPDATE team_job
+        SET job_name = #{jobName}, team_id = #{teamId}, description = #{description}, content = #{content}, type = #{type}, tags = #{tags}
+        WHERE id = #{id}
+    </update>
+
+    <select id="findTeamJobById" parameterType="long" resultMap="TeamJobResultMap">
+        SELECT * FROM team_job
+        WHERE id = #{id}
+    </select>
+
+    <select id="findTeamJobsByTeamId" parameterType="String" resultMap="TeamJobResultMap">
+        SELECT * FROM team_job
+        WHERE team_id = #{teamId}
+    </select>
+
+    <delete id="deleteTeamJob" parameterType="long">
+        DELETE FROM team_job
+        WHERE id = #{id}
+    </delete>
+
+</mapper>

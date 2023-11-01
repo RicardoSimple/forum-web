@@ -1,5 +1,6 @@
 package com.ricardo.web.dto;
 
+import com.ricardo.web.model.TalentUser;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -27,4 +28,16 @@ public class TalentUserDO {
     private LocalDateTime gmtCreated;
 
     private LocalDateTime gmtModified;
+
+    public TalentUser toUser(){
+        TalentUser talentUser = new TalentUser();
+        talentUser.setEducation(this.education);
+        talentUser.setStatus(this.status);
+        talentUser.setId(this.id);
+        talentUser.setName(this.name);
+        talentUser.setEmail(this.email);
+        talentUser.setAvatar(this.avatar);
+        talentUser.setPhone(this.phone);
+        return talentUser;
+    }
 }
