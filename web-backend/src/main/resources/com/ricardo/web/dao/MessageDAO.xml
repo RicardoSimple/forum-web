@@ -13,40 +13,30 @@
         <result column="gmt_modified" property="gmtModified"/>
     </resultMap>
 
-    <insert id="insertMessage" parameterType="com.ricardo.web.dto.TalentUserDO">
-        INSERT INTO talent_user (name, phone, nickname, avatar, email, status, education,gmt_created,gmt_modified)
-        VALUES (#{name}, #{phone}, #{nickName}, #{avatar}, #{email}, #{status}, #{education},now(),now())
+    <insert id="insertMessage" parameterType="com.ricardo.web.dto.MessageDO">
+        INSERT INTO message (name, user_id, user_type, title, content,gmt_created,gmt_modified)
+        VALUES (#{name}, #{userId}, #{userType}, #{title}, #{content},now(),now())
     </insert>
 
-    <update id="updateTalentUser" parameterType="com.ricardo.web.dto.TalentUserDO">
-        UPDATE talent_user
-        SET name = #{name}, phone = #{phone}, nickname = #{nickName}, avatar = #{avatar}, email = #{email},
-            status = #{status}, education = #{education},gmt_modified = now()
+    <update id="updateMessage" parameterType="com.ricardo.web.dto.MessageDO">
+        UPDATE message
+        SET name = #{name}, user_id = #{userId}, user_type = #{userType}, title = #{title}, content = #{content},gmt_modified = now()
         WHERE id = #{id}
     </update>
 
-    <select id="findTalentUserById" parameterType="long" resultType="com.ricardo.web.dto.TalentUserDO">
-        SELECT * FROM talent_user
+    <select id="findMessageById" parameterType="long" resultType="com.ricardo.web.dto.MessageDO">
+        SELECT * FROM message
         WHERE id = #{id}
     </select>
 
-    <select id="findTalentUserByUsername" parameterType="String" resultType="com.ricardo.web.dto.TalentUserDO">
-        SELECT * FROM talent_user
-        WHERE name = #{username}
+    <select id="findMessageByUserIdAndType" parameterType="com.ricardo.web.dto.MessageDO" resultType="java.util.List">
+        SELECT * FROM message
+        WHERE user_id = #{userId} and user_type = #{userType}
     </select>
 
-    <delete id="deleteTalentUser" parameterType="long">
-        DELETE FROM talent_user
+    <delete id="deleteMessage" parameterType="long">
+        DELETE FROM message
         WHERE id = #{id}
     </delete>
-
-    <select id="findTalentUserByPhone" parameterType="String" resultType="com.ricardo.web.dto.TalentUserDO">
-        SELECT * FROM talent_user
-        WHERE phone = #{phone}
-    </select>
-
-    <select id="findAllTalentUsers"  resultType="java.util.List">
-        SELECT * FROM talent_user
-    </select>
 
 </mapper>
