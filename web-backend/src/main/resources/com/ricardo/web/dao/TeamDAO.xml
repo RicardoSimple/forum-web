@@ -37,4 +37,9 @@
         WHERE id = #{id}
     </delete>
 
+    <select id="findTeamByName" parameterType="String" resultMap="TeamResultMap">
+        SELECT * FROM team
+        WHERE name = #{name}
+    </select>
+
 </mapper>

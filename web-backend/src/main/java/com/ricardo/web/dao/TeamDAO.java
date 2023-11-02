@@ -17,4 +17,5 @@ public interface TeamDAO {
 
     void deleteTeam(long id);
 
+    TeamDO findTeamByName(String name);
 }

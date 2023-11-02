@@ -1,47 +1,60 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+    <div id="app">
+        <div style="height: 1000px;">
+            <!-- 顶部 -->
+            <XjTop :key="new Date().getTime()"></XjTop>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+            <!-- 路由页面 -->
+            <el-card class="box-card" style="margin-left: 1%;background-color: #FFFFFF;overflow:auto; width: 98%;">
+                <router-view/>
+            </el-card>
+
+            <!-- 底部 -->
+            <el-card class="box-card" style="margin-left: 1%;background-color: #FFFFFF;width: 98%;height: 300px; margin-top: 1%;">
+                <XjBottom></XjBottom>
+            </el-card>
+        </div>
     </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
+<script>
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+    //引入组件
+    import XjTop from './page/top/XjTop';
+    import XjBottom from './page/bottom/XjBottom';
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
+    export default {
+        name: "app",
+        //定义组件
+        components: {
+            XjTop: XjTop,
+            XjBottom: XjBottom,
+        }
+    }
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
+
+</script>
+
+<style>
+    #app {
+        font-family: Avenir, Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-align: center;
+        color: #2c3e50;
+    }
+
+    nav {
+        padding: 30px;
+    }
+
+    nav a {
+        font-weight: bold;
+        color: #2c3e50;
+    }
+
+    nav a.router-link-exact-active {
+        color: #42b983;
+    }
 </style>
