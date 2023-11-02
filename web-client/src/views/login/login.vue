@@ -37,6 +37,7 @@ export default {
     return {
       obj: {},
       defaultData: {
+        userType: "talent_user",
         phone: null,
         pwd: null,
       },
