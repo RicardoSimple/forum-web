@@ -3,27 +3,7 @@
     <H3>
       欢迎来到 企业论坛系统
     </H3>
-    <H5>
-      这里提供了
-      | 工具服务
-      | 通用快速开发平台 spring-boot-plus2
-      | 开源项目
-      | 个人作品展示
-      | 其他更多
-    </H5>
-    <H5>
-      spring-boot-plus2 码云地址：<a
-        href="https://gitee.com/wslxm/spring-boot-plus2">https://gitee.com/wslxm/spring-boot-plus2</a>
-    </H5>
-    <H5>
-      xj-client 码云地址：<a
-        href="https://gitee.com/wslxm/xj-client">https://gitee.com/wslxm/xj-client</a>
-    </H5>
-    <H5>
-      QQ 交流群：1037211892
-    </H5>
-
-    <avue-data-card :option="option"></avue-data-card>
+    
   </div>
 </template>
 

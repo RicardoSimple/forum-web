@@ -64,28 +64,42 @@
                             }]
                         },
                         {
-                            label: '邮箱',
-                            prop: 'email',
+                            label: '手机号',
+                            prop: 'number',
                             maxlength: 32,
                             showWordLimit: true,
                             span: 20,
                             rules: [{
                                 required: true,
-                                message: "请输入 邮箱",
+                                message: "请输入 手机号",
                                 trigger: "blur"
                             }]
                         },
                         {
-                            label: '邮箱验证',
-                            prop: 'emailCode',
+                            label: '手机号验证',
+                            prop: 'numberCode',
                             maxlength: 6,
                             showWordLimit: true,
                             span: 20,
                             rules: [{
                                 required: true,
-                                message: "请输入 邮箱验证码",
+                                message: "请输入 手机验证码",
                                 trigger: "blur"
                             }]
+                        },
+                        {
+                            label:'用户类型',
+                            prop:'userType',
+                            tip: '输入企业用户或者个人用户',
+                            maxlength: 4,
+                            showWordLimit: true,
+                            span: 20,
+                            rules: [{
+                                required: true,
+                                message: "输入企业用户或者个人用户",
+                                trigger: "blur"
+                            }]
+
                         },
                         {
                             label: '账号',

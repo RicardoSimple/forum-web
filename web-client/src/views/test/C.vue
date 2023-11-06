@@ -1,6 +1,6 @@
 <template>
     <div>
-        <H2> xj-client </H2>
+        <H2> client </H2>
         <H5>这里提供该项目 demo 的基础用法</H5>
         <br>
         <el-card class="box-card" style="margin-left: 25%;background-color: #FFFFFF;overflow:auto; width: 50%;">
@@ -100,7 +100,7 @@
             <span style="text-align: left">
                 <div>五、登录注册</div>
                   <br/>
-                <div> 1、该功能接口目前登录接口模拟对接的 xijia-tool 项目</div>
+                <div> 1、该功能接口目前登录接口模拟对接的 tool 项目</div>
                   <br/>
                   <div>2、当前登录成功后 获取用户信息到 sessionStorage 缓存中 </div>
                   <br/>

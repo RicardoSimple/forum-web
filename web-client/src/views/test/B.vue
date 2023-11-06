@@ -1,7 +1,6 @@
 <template>
     <div>
         <div>工具服务</div>
-        <div> <span>v1版本地址: </span> <a href="http://v1.tool.xijia.plus/user" target="_blank">http://v1.tool.xijia.plus/user</a></div>
         <br/>
         <div>
 
