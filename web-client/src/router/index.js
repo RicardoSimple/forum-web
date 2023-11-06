@@ -68,6 +68,40 @@ const routes = [
     // component: HomeView
     component: () => import(/* webpackChunkName: "about" */ '../views/login/register.vue')
   },
+  {
+    path: '/artical',
+    name: 'artical',
+    // component: HomeView
+    component: () => import(/* webpackChunkName: "about" */ '../views/artical/artical.vue'),
+    children: [
+      {
+        path:'id',
+      }
+    ]
+  },
+  {
+    path: '/creat/artical',
+    name: 'artical_new',
+    // component: HomeView
+    component: () => import(/* webpackChunkName: "about" */ '../views/artical/new.vue')
+  },
+  {
+    path: '/job',
+    name: 'job',
+    // component: HomeView
+    component: () => import(/* webpackChunkName: "about" */ '../views/job/job.vue'),
+    children: [
+      {
+        path:'id',
+      }
+    ]
+  },
+  {
+    path: '/creat/job',
+    name: 'job_new',
+    // component: HomeView
+    component: () => import(/* webpackChunkName: "about" */ '../views/job/new.vue')
+  },
 ]
 
 const router = new VueRouter({
