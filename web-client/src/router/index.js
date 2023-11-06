@@ -103,6 +103,16 @@ const routes = [
     // component: HomeView
     component: () => import(/* webpackChunkName: "about" */ '../views/job/new.vue')
   },
+
+
+  //404页面，****如果继续添加路由，请在改路径上放***
+  {
+    path: '*',
+    name: '404not',
+    // component: HomeView
+    component: () => import(/* webpackChunkName: "about" */ '../views/404not.vue')
+  },
+
 ]
 
 const router = new VueRouter({
