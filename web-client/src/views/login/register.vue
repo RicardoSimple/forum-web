@@ -43,7 +43,7 @@
         src=""
         style="margin-left: 3%;text-align: center ; font-size: 12px"
       >
-        <router-link to="/login">登录</router-link>
+        <router-link to="/login"><el-button>登录</el-button></router-link>
       </span>
     </el-card>
   </div>

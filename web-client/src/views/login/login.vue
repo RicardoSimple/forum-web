@@ -56,7 +56,7 @@ export default {
           {
             label: '用户类型',
             prop: 'userType',
-            tip: '输入企业用户或者个人用户',
+            tip: '选择企业用户或者个人用户',
             maxlength: 4,
             showWordLimit: true,
             span: 20,

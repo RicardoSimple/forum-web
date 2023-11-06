@@ -10,7 +10,7 @@
                 :size="50"
                 :src= "img"
             ></el-avatar>
-            <span> {{ artical.author_name }}</span>
+            <span >{{ author_name }}</span>
             <span style="font-size: 15px;">发布时间：{{ artical.gmtCreated }}</span>
         </router-link>
       </div>
@@ -33,8 +33,11 @@ export default{
         img: function() {
             //根据用户id查找图像并返回图片链接
             return this.artical.author_id;
+        },
+        author_name: function(){
+            //根据用户id返回用户名,未完成
+            return this.artical.author_id;
         }
-        
 
         
     }
