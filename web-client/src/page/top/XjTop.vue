@@ -28,12 +28,10 @@
           :index="''+i"
           :key="i"
         >
-          <!-- 一级菜单 -->
           <el-menu-item v-if="item.path != null">
             <router-link :to="item.path">{{item.name}}</router-link>
           </el-menu-item>
 
-          <!-- 存在二级的菜单 -->
           <el-submenu v-if="item.children != null">
             <template slot="title">{{item.name}}</template>
             <el-menu-item
@@ -50,6 +48,7 @@
         </el-menu>
       </div>
     </el-col>
+ 
 
     <!-- 登录/登出/用户信息 -->
     <el-col :span="3">
@@ -95,10 +94,10 @@ export default {
       userData: null,
       // 功能集 (注意这里方向是从右到左)
       funData: [
-        {
-          path: null,
-          name: "相关文档",
-          children: [
+        // {
+          // path: null,
+          // name: "相关文档",
+          // children: [
             {
               path: "/test/c",
               name: "本项目文档",
@@ -109,18 +108,18 @@ export default {
               name: "作者信息",
               children: null
             },
-          ]
-        },
-        {
-          path: "/test/b",
-          name: "工具服务",
-          children: null
-        },
-        {
-          path: "/test/a",
-          name: "接口测试",
-          children: null
-        },
+          // ]
+        // },
+        // {
+        //   path: "/test/b",
+        //   name: "工具服务",
+        //   children: null
+        // },
+        // {
+        //   path: "/test/a",
+        //   name: "接口测试",
+        //   children: null
+        // },
       ]
     }
   },
