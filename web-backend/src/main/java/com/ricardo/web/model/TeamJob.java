@@ -8,7 +8,7 @@ public class TeamJob {
 
     private String jobName;
 
-    private String teamId;
+    private long teamId;
 
     private String desc;
 
@@ -17,5 +17,7 @@ public class TeamJob {
     private String type;
 
     private String[] tags;
+
+    private int count;
 
 }

@@ -10,7 +10,7 @@ public class TeamJobDO {
 
     private String jobName;
 
-    private String teamId;
+    private long teamId;
 
     private String desc;
 
@@ -19,6 +19,8 @@ public class TeamJobDO {
     private String type;
 
     private String tags;
+
+    private int count;
 
     public TeamJob toTeamJob(){
         TeamJob teamJob = new TeamJob();
@@ -29,6 +31,7 @@ public class TeamJobDO {
         teamJob.setDesc(this.desc);
         teamJob.setContent(this.content);
         teamJob.setTags(this.tags.split("|"));
+        teamJob.setCount(this.count);
         return teamJob;
     }
 }

@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class MessageAddParam {
+    private String id;
     private String name;
     private String userID;
     private String userType;
