@@ -19,12 +19,7 @@ public class CommentApi {
     }
 
 
-    // todo
     public Result GetCommentById(@RequestParam("id") String id){
-        return null;
+
     }
-
-    // todo getCommontByUserIdAndUserType
-
-    // todo getAll
 }
