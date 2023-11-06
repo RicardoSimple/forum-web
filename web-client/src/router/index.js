@@ -8,7 +8,19 @@ const routes = [
     path: '/',
     name: 'home',
     // component: HomeView
-    component: () => import(/* webpackChunkName: "about" */ '../views/home/index.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/home/index.vue'),
+    children: [
+      {
+        path: '/comment',
+        name: 'comment',
+        component: () => import('../components/comment.vue')
+      },
+      {
+        path: '/job',
+        name: 'job',
+        component: () => import('../components/job.vue')
+      },
+    ]
   },
   {
     path:'/home/userhomepage1',
