@@ -53,7 +53,8 @@ export default {
     return {
       obj: {},
       defaultData: {
-        username: null,
+        userType:"talent_user",
+        nickName: null,
         password: null,
       },
       uri: {
@@ -72,43 +73,7 @@ export default {
         emptyBtn: false,
         submitText: '登陆',
         column: [
-          {
-            label: '昵称',
-            prop: 'nickname',
-            maxlength: 16,
-            showWordLimit: true,
-            span: 20,
-            rules: [{
-              required: true,
-              message: "请输入 昵称",
-              trigger: "blur"
-            }]
-          },
-          {
-            label: '手机号',
-            prop: 'number',
-            maxlength: 32,
-            showWordLimit: true,
-            span: 20,
-            rules: [{
-              required: true,
-              message: "请输入 手机号",
-              trigger: "blur"
-            }]
-          },
-          {
-            label: '手机号验证',
-            prop: 'numberCode',
-            maxlength: 6,
-            showWordLimit: true,
-            span: 20,
-            rules: [{
-              required: true,
-              message: "请输入 手机验证码",
-              trigger: "blur"
-            }]
-          },
-          {
+        {
             label: '用户类型',
             prop: 'userType',
             tip: '输入企业用户或者个人用户',
@@ -135,16 +100,38 @@ export default {
             ],
           },
           {
-            label: '账号',
-            prop: 'username',
-            tip: '输入邮箱后自动获取@符号前的对应的账号或手机号填入',
-            disabled: true,
-            maxlength: 32,
+            label: '昵称',
+            prop: 'nickName',
+            maxlength: 16,
             showWordLimit: true,
             span: 20,
             rules: [{
               required: true,
-              message: "账号",
+              message: "请输入 昵称",
+              trigger: "blur"
+            }]
+          },
+          {
+            label: '姓名',
+            prop: 'name',
+            maxlength: 16,
+            showWordLimit: true,
+            span: 20,
+            rules: [{
+              required: true,
+              message: "请输入 姓名",
+              trigger: "blur"
+            }]
+          },
+          {
+            label: '手机号',
+            prop: 'number',
+            maxlength: 12,
+            showWordLimit: true,
+            span: 20,
+            rules: [{
+              required: true,
+              message: "请输入 手机号",
               trigger: "blur"
             }]
           },

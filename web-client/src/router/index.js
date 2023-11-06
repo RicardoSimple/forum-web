@@ -10,6 +10,7 @@ const routes = [
     name: 'home',
     // component: HomeView
     component: () => import(/* webpackChunkName: "about" */ '../views/home/index.vue'),
+    redirect:'/comment',
     children: [
       {
         path: '/comment',

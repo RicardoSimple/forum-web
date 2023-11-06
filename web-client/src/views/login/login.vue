@@ -116,25 +116,21 @@ export default {
       this.closeDialog(false);
     },
     async submit () {
-      if ((await login(this.obj)).data.code == 200) {
+      var res = ((await login(this.obj)).data)
+      if (res.code == 200) {
         console.log("成功")
+        this.$message.success("登录成功")
+        this.findLoginUser(res.data)
+      } else {
+        this.$message.error("手机号或密码错误")
       }
     },
     // 获取当前登录账号信息缓存到sessionStorage
-    findLoginUser () {
-      this.crud.get("/api/client/tool/toolUser/findLoginUser").then(res => {
-        let userData = {
-          username: res.data.data.username, //账号
-          nickname: res.data.data.nickname, // 昵称
-          fullName: res.data.data.fullName, // 姓名
-          head: res.data.data.head, // 头像
-        };
-        sessionStorage.setItem("userData", JSON.stringify(userData))
-        window.location.href = "/"
-      })
+    findLoginUser (userData) {
+      console.log(userData)
+      sessionStorage.setItem("userData", JSON.stringify(userData))
+      window.location.href = "/"
     },
-
-
   }
 }
 </script>
