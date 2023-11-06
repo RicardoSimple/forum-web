@@ -7,6 +7,7 @@ import com.ricardo.web.dto.TeamUserDO;
 import com.ricardo.web.model.Result;
 import com.ricardo.web.model.TalentUser;
 import com.ricardo.web.model.TeamUser;
+import com.ricardo.web.model.param.TokenInfo;
 import com.ricardo.web.model.param.UserRegisterRequest;
 import com.ricardo.web.service.UserService;
 import com.ricardo.web.util.Code;
@@ -96,25 +97,25 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public long login(String type,String phone,String pwd) {
+    public Object login(String type,String phone,String pwd) {
         if(type.equals(Const.TALENT_TYPE)){
             TalentUserDO user = talentUserDAO.findTalentUserByPhone(phone);
             if (user==null){
-                return -1;
+                return null;
             }
             if(user.getPwd().equals(pwd)){
-                return user.getId();
+                return TokenInfo.getInfoByUser(user.toUser(),Const.TALENT_TYPE);
             }
-            return -1;
+            return null;
         }
         TeamUserDO user = teamUserDAO.findTeamUserByPhone(phone);
         if(user==null){
-            return -1;
+            return null;
         }
         if(user.getPwd().equals(pwd)){
-            return user.getId();
+            return TokenInfo.getInfoByUser(user.toUser(),Const.TEAM_TYPE);
         }
-        return -1;
+        return null;
     }
 
     @Override

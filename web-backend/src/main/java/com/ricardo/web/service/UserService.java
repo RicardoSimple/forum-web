@@ -9,7 +9,7 @@ public interface UserService {
 
     Result getAllUsersByType(String type);
 
-    long login(String userType, String phone, String pwd);
+    Object login(String userType, String phone, String pwd);
 
     Result getUserByIdAndType(String userType, Long id);
 }
