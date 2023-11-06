@@ -5,4 +5,6 @@ import com.ricardo.web.model.param.TeamJobParam;
 
 public interface TeamJobService {
     Result addOrUpdateTeamJob(TeamJobParam param);
+
+    Result getTeamJobByTeamId(String teamId);
 }

@@ -3,11 +3,15 @@ package com.ricardo.web.service.impl;
 import com.ricardo.web.dao.TeamJobDAO;
 import com.ricardo.web.dto.TeamJobDO;
 import com.ricardo.web.model.Result;
+import com.ricardo.web.model.TeamJob;
 import com.ricardo.web.model.param.TeamJobParam;
 import com.ricardo.web.service.TeamJobService;
 import com.ricardo.web.util.Code;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class TeamJobServiceImpl implements TeamJobService {
@@ -36,5 +40,20 @@ public class TeamJobServiceImpl implements TeamJobService {
         }
 
         return Result.success(null);
+    }
+
+    @Override
+    public Result getTeamJobByTeamId(String teamId) {
+        Long id = Long.valueOf(teamId);
+        if(id<0){
+            return Result.fail(Code.FAIL_NO_ZERO,"id小于0");
+        }
+        List<TeamJobDO> teamJobDOs = teamJobDAO.findTeamJobsByTeamId(teamId);
+
+        List<TeamJob> results = new ArrayList<>();
+        for (int i = 0; i < teamJobDOs.size(); i++) {
+            results.add(teamJobDOs.get(i).toTeamJob());
+        }
+        return Result.success(results);
     }
 }

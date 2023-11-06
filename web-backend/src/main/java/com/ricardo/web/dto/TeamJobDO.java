@@ -4,6 +4,8 @@ import cn.hutool.Hutool;
 import com.ricardo.web.model.TeamJob;
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
 public class TeamJobDO {
     private long id;
@@ -21,6 +23,9 @@ public class TeamJobDO {
     private String tags;
 
     private int count;
+
+    private LocalDateTime gmtCreated;
+    private LocalDateTime gmtModified;
 
     public TeamJob toTeamJob(){
         TeamJob teamJob = new TeamJob();

@@ -27,7 +27,7 @@
         WHERE id = #{id}
     </select>
 
-    <select id="findTeamJobsByTeamId" parameterType="String" resultMap="TeamJobResultMap">
+    <select id="findTeamJobsByTeamId" parameterType="String" resultType="java.util.List">
         SELECT * FROM team_job
         WHERE team_id = #{teamId}
     </select>
@@ -36,5 +36,10 @@
         DELETE FROM team_job
         WHERE id = #{id}
     </delete>
+
+    <select id="findTeamJobByName" parameterType="String" resultType="java.util.List">
+        SELECT * FROM team_job
+        WHERE job_name = #{jobName}
+    </select>
 
 </mapper>

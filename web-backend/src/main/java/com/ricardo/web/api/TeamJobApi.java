@@ -4,10 +4,7 @@ import com.ricardo.web.model.Result;
 import com.ricardo.web.model.param.TeamJobParam;
 import com.ricardo.web.service.TeamJobService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/teamjob")
@@ -20,4 +17,10 @@ public class TeamJobApi {
     public Result addOrUpdateTeamJob(@RequestBody TeamJobParam param){
         return teamJobService.addOrUpdateTeamJob(param);
     }
+    @GetMapping("/get")
+    public Result  getTeamJobByTeamId(@RequestParam("teamId") String teamId){
+        return teamJobService.getTeamJobByTeamId(teamId);
+    }
+
+    // todo getByname
 }

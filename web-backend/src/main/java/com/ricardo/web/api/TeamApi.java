@@ -21,4 +21,7 @@ public class TeamApi {
         return teamService.addTeam(param);
     }
 
+    // todo getAll
+
+
 }
