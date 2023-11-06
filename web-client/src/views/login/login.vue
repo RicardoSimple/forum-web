@@ -22,7 +22,7 @@
         src=""
         style="margin-left: 3%;text-align: center ; font-size: 12px"
       >
-        <router-link to="/register">没有账号</router-link>
+        <router-link to="/register"><el-button>没有账号</el-button></router-link>
       </span>
     </el-card>
   </div>

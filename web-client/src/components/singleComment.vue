@@ -30,7 +30,7 @@ export default {
     },
   },
   computed: {
-    url () {
+    url (){
       // 计算头像 URL 的逻辑，可以从 comment 中获取
       return this.comment.avatarUrl;
     },

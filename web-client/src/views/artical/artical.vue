@@ -1,40 +1,25 @@
 <template>
     <div>
-        <el-header >
-            <div class="title">
-                <h3>
-                标题
-                </h3>
-            </div>
-        </el-header>
-        <el-main>
-            <div class="author" style="text-align: left;font-size: 120%;">
-                张三
-            </div>
-            <div class="artical_body">
-                <p style ="text-align: left;font-size: 120%;">
-                我是文章
-                </p>
-            </div>
-        </el-main>
+        <singleartical  :artical ="artical"></singleartical>
     </div>
 </template>
 <script>
-import router from '@/router'
+import singleartical from './singleartical.vue'
 export default{
-    name:"artical"
-
+    components:{
+    singleartical
+},
+    data(){
+        return{
+            artical:{
+                id: 1234,   //帖子id
+                author_id: "12345", //作者id
+                author_name: "张三",//用户昵称
+                title: "标题",
+                body: "文章主体",
+                gmtCreated: "2023/11/6 16:33",
+            }
+        }
+    }
 }
 </script>
-<style>
-.title{
-    font-size:35px;
-}
-
-.articcal_body{
-    font-size: 35px;
-    text-align: left;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)
-
-}
-</style>

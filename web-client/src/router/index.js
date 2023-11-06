@@ -74,7 +74,7 @@ const routes = [
     path: '/artical',
     name: 'artical',
     // component: HomeView
-    component: () => import(/* webpackChunkName: "about" */ '../views/artical/artical.vue'),
+    component: () => import( '../views/artical/artical.vue'),
     children: [
       {
         path:'id',
@@ -88,7 +88,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/artical/new.vue')
   },
   {
-    path: '/job',
+    path: '/jobdetail',
     name: 'job',
     // component: HomeView
     component: () => import(/* webpackChunkName: "about" */ '../views/job/job.vue'),
