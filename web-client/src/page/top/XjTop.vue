@@ -48,7 +48,6 @@
         </el-menu>
       </div>
     </el-col>
- 
 
     <!-- 登录/登出/用户信息 -->
     <el-col :span="3">
@@ -65,10 +64,10 @@
         <span v-if="userData!=null">
           <span> <img
               :src='userData.head'
-              style='cursor:pointer;border-radius: 20px;height: 25px;width: 25px'
+              style='cursor:pointer;border-radius: 50%;height: 50px;width: 50px'
             ></span>
           <span style="margin-right: 12%;margin-left: 3%">
-            {{userData.nickname.length > 3?userData.nickname.substring(0,3)+"..." : userData.nickname}}
+            {{userData.nickName}}
           </span>
           <!-- 退出,鼠标移到到该位置变小手 -->
           <span
@@ -95,20 +94,20 @@ export default {
       // 功能集 (注意这里方向是从右到左)
       funData: [
         // {
-          // path: null,
-          // name: "相关文档",
-          // children: [
-            {
-              path: "/test/c",
-              name: "本项目文档",
-              children: null
-            },
-            {
-              path: "/test/d",
-              name: "作者信息",
-              children: null
-            },
-          // ]
+        // path: null,
+        // name: "相关文档",
+        // children: [
+        {
+          path: "/test/c",
+          name: "本项目文档",
+          children: null
+        },
+        {
+          path: "/test/d",
+          name: "作者信息",
+          children: null
+        },
+        // ]
         // },
         // {
         //   path: "/test/b",
@@ -138,6 +137,7 @@ export default {
     console.log("判断用户信息是否存在,控制展示用户信息还是展示头像")
     this.userData = JSON.parse(sessionStorage.getItem("userData"))
     console.log("当前用户信息:", this.userData)
+    console.log(this.userData)
   },
 }
 </script>

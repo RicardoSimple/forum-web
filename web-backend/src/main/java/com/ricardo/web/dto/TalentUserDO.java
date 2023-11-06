@@ -35,6 +35,7 @@ public class TalentUserDO {
         talentUser.setStatus(this.status);
         talentUser.setId(this.id);
         talentUser.setName(this.name);
+        talentUser.setNickName(this.nickName);
         talentUser.setEmail(this.email);
         talentUser.setAvatar(this.avatar);
         talentUser.setPhone(this.phone);

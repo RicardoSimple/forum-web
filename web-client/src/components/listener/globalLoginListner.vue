@@ -20,5 +20,8 @@ export default {
   computed: {
     ...mapState(['user']), // 从 Vuex store 中获取用户信息
   },
+  methods:{
+    
+  }
 };
 </script>

@@ -20,7 +20,8 @@ export async function register (param) {
 export async function login (param) {
   const response = await service.post('/auth/login', param);
   if (response.status === 200) {
-    const user = response.data; // 假设用户数据在响应中返回
+    console.log(response.data)
+    const user = response.data.data; // 假设用户数据在响应中返回
     store.dispatch('loginUser', user);
   }
   return response;
