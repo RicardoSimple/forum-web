@@ -1,6 +1,6 @@
 // 登录接口
 import service from '../http/index.js'
-import { loginUser } from '../store'; // 导入Vuex操作
+import store from '../util/store.js'; // 导入Vuex操作
 
 /**
  * 注册接口
@@ -21,7 +21,7 @@ export async function login (param) {
   const response = await service.post('/auth/login', param);
   if (response.status === 200) {
     const user = response.data; // 假设用户数据在响应中返回
-    loginUser(user); // 将用户信息存储在Vuex中
+    store.dispatch('loginUser', user);
   }
   return response;
 }
@@ -32,7 +32,7 @@ export async function login (param) {
  * @returns 
  */
 export async function logout () {
-  loginUser()
+  store.dispatch('logoutUser');
   return await service.get('/auth/logout')
 }
 /**

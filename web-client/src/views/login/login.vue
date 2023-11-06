@@ -54,6 +54,32 @@ export default {
         submitText: '登陆',
         column: [
           {
+            label: '用户类型',
+            prop: 'userType',
+            tip: '输入企业用户或者个人用户',
+            maxlength: 4,
+            showWordLimit: true,
+            span: 20,
+            type: 'select', // 添加这一行
+            dicData: [      // 添加下拉选项
+              {
+                label: '企业用户',
+                value: 'team_user',
+              },
+              {
+                label: '个人用户',
+                value: 'talent_user',
+              },
+            ],
+            rules: [
+              {
+                required: true,
+                message: '请选择用户类型',
+                trigger: 'blur',
+              },
+            ],
+          },
+          {
             label: '手机号',
             prop: 'phone',
             maxlength: 12,
@@ -90,7 +116,7 @@ export default {
       this.closeDialog(false);
     },
     async submit () {
-      if ((await login(this.defaultData)).data.code == 200) {
+      if ((await login(this.obj)).data.code == 200) {
         console.log("成功")
       }
     },

@@ -1,3 +1,4 @@
+import { saveUserInfo } from '@/util/storeService'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
@@ -23,14 +24,14 @@ const routes = [
     ]
   },
   {
-    path:'/home/userhomepage1',
-    name:'userhomepage1',
-    component:()=>import(/*webpackChunkName:"about"*/'../account/userhomepage1.vue')
+    path: '/home/userhomepage1',
+    name: 'userhomepage1',
+    component: () => import(/*webpackChunkName:"about"*/'../account/userhomepage1.vue')
   },
   {
-    path:'/home/userhomepage2',
-    name:'userhomepage2',
-    component:()=>import(/*webpackChunkName:"about"*/'../account/userhomepage2.vue')
+    path: '/home/userhomepage2',
+    name: 'userhomepage2',
+    component: () => import(/*webpackChunkName:"about"*/'../account/userhomepage2.vue')
   },
   {
     path: '/test/a',
@@ -107,5 +108,34 @@ const routes = [
 const router = new VueRouter({
   routes
 })
+// 添加全局路由守卫
+router.beforeEach((to, from, next) => {
+  // 检查用户是否已登录
+  const userIsLoggedIn = checkUserLoggedIn(); // 实现此方法来检查用户登录状态
+
+  if (to.name === 'login' && userIsLoggedIn) {
+    // 如果用户已登录并尝试访问登录页，则自动重定向到首页
+    next({ name: 'home' }); // 请替换 'home' 为您的首页路由名称
+  } else {
+    next(); // 继续导航
+  }
+});
+
+// 检查用户是否已登录
+function checkUserLoggedIn () {
+  const cookies = document.cookie.split('; ');
+
+  for (const cookie of cookies) {
+    const [name, value] = cookie.split('=');
+    if (name === 'attribute') { // 假设 'token' 是用于存储用户登录信息的 Cookie 名称
+      // 用户已登录
+      saveUserInfo(value)
+      return true;
+    }
+  }
+
+  // 用户未登录
+  return false;
+}
 
 export default router
