@@ -5,7 +5,7 @@
     <!-- 项目名 -->
     <el-col :span="4">
       <div
-        class="grid-content bg-purple"
+        class="grid-content"
         style="margin-top: 5%;margin-left: 10%;text-align: left;"
       >
         <span style="font-size: 20px;"> <router-link

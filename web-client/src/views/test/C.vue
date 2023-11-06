@@ -49,6 +49,11 @@
                  <li>----------- login   登录/注册  </li>
                  <li>----------- test    测试页,顶部菜单点击的所有页面  </li>
                    <br/>
+                 <li>src/account - 个人主页界面</li>
+                 <li>----------- homepage1 （个人用户）发布的帖子</li>
+                 <li>----------- homepage2 （个人用户）投递的岗位</li>
+                 <li>----------- homepage1 （企业用户）发布的帖子</li>
+                 <li>----------- homepage1 （企业用户）招聘的岗位</li>
                    <li>src/App.vue    - 项目入口  </li>
                    <li>src/main.js    - 项目核心依赖配置  </li>
                    <li>vue.config.js  - 项目服务信息  </li>
