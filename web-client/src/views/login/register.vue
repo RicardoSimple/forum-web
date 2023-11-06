@@ -331,11 +331,12 @@ export default {
         this.$message.error("两次输入的密码不一致")
         throw new Error("两次输入的密码不一致")
       }
+      console.log(this.obj);
       var res = (await register(this.obj)).data;
       console.log(res);
       if (res.code == '200') {
         this.$message.success("注册成功！请重新登录")
-        window.location.href = "/#/login"
+        //window.location.href = "/#/login"
       } else {
         this.$message.error("注册失败")
       }

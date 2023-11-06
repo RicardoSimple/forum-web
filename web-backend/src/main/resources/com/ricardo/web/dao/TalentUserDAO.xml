@@ -16,8 +16,8 @@
     </resultMap>
 
     <insert id="insertTalentUser" parameterType="com.ricardo.web.dto.TalentUserDO">
-        INSERT INTO talent_user (name, phone, nickname, avatar, email, status, education,gmt_created,gmt_modified)
-        VALUES (#{name}, #{phone}, #{nickName}, #{avatar}, #{email}, #{status}, #{education},now(),now())
+        INSERT INTO talent_user (name, phone, nickname, avatar, email, status,pwd, education,gmt_created,gmt_modified)
+        VALUES (#{name}, #{phone}, #{nickName}, #{avatar}, #{email}, #{status},#{pwd}, #{education},now(),now())
     </insert>
 
     <update id="updateTalentUser" parameterType="com.ricardo.web.dto.TalentUserDO">

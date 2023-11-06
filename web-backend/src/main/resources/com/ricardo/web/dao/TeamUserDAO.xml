@@ -17,8 +17,8 @@
     </resultMap>
 
     <insert id="insertTeamUser" parameterType="com.ricardo.web.dto.TeamUserDO">
-        INSERT INTO team_user (name, phone, nickname, avatar, email, team_id, role,gmt_created,gmt_modified)
-        VALUES (#{name}, #{phone}, #{nickName}, #{avatar}, #{email}, #{teamId}, #{role},now(),now())
+        INSERT INTO team_user (name, phone, nickname, avatar, email, team_id,pwd, role,gmt_created,gmt_modified)
+        VALUES (#{name}, #{phone}, #{nickName}, #{avatar}, #{email}, #{teamId},#{pwd}, #{role},now(),now())
     </insert>
 
     <update id="updateTeamUser" parameterType="com.ricardo.web.dto.TeamUserDO">

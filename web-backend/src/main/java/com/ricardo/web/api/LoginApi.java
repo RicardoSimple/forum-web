@@ -1,7 +1,7 @@
 package com.ricardo.web.api;
 
 
-import javax.servlet.http.HttpServletRequest;
+import com.ricardo.web.model.param.TokenInfo;
 import com.ricardo.web.model.param.UserLoginRequest;
 import com.ricardo.web.model.param.UserRegisterRequest;
 import com.ricardo.web.service.UserService;
@@ -10,6 +10,9 @@ import com.ricardo.web.util.Const;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.ricardo.web.model.Result;
+
+import javax.servlet.http.HttpServletRequest;
+import java.net.HttpCookie;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -30,13 +33,13 @@ public class LoginApi {
         if(param.getPhone().isBlank()){
             return Result.fail(Code.FAIL_DUPLICATE,"手机号为空");
         }
-        Object user = userService.login(param.getUserType(),param.getPhone(),param.getPwd());
-        if (user==null){
+        Object token =  userService.login(param.getUserType(),param.getPhone(),param.getPwd());
+        if (token==null){
             return Result.fail(Code.FAIL_NO_AUTH,"密码或手机号不正确");
         }
-        request.getSession().setAttribute(Const.COOKIE_KEY,user);
+        request.getSession().setAttribute(Const.COOKIE_KEY, token);
         // 返回登录成功信息
-        return Result.success(user);
+        return Result.success(token);
     }
 
     @GetMapping("/logout")
