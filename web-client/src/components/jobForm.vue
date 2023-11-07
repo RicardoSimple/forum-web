@@ -26,10 +26,10 @@
         <div>
           <el-tag
             v-for="tag in job.tags"
-            :key="tag.name"
+            :key="tag"
             class="tags"
           >
-            {{tag.name}}
+            {{tag}}
           </el-tag>
         </div>
       </div>
@@ -57,9 +57,15 @@
   </div>
 </template>
 
+
 <script>
 export default {
   name: 'JobForm',
+  data () {
+    return {
+      team: {},
+    }
+  },
   props: {
     job: {
       type: Object,
@@ -72,6 +78,14 @@ export default {
       return this.job.avatarUrl;
     },
   },
+  watch:{
+    job:{
+      handler:async function(oldName,newName){
+        
+      },
+      immediate:true
+    }
+  }
 };
 </script>
 

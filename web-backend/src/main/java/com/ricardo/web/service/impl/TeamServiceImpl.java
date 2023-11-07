@@ -49,4 +49,13 @@ public class TeamServiceImpl implements TeamService {
         }
         return Result.success(results);
     }
+
+    @Override
+    public Result getTeamById(String id) {
+        TeamDO teamDO = teamDAO.findTeamById(Long.valueOf(id));
+        if(teamDO==null){
+            return Result.fail(Code.FAIL_NO_DATA,"id错误");
+        }
+        return Result.success(teamDO.toTeam());
+    }
 }

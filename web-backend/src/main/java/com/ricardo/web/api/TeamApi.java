@@ -23,5 +23,8 @@ public class TeamApi {
         return teamService.getAllteam(type);
     }
 
-
+    @GetMapping("/get")
+    public Result getTeamById(@RequestParam("id")String id){
+        return teamService.getTeamById(id);
+    }
 }

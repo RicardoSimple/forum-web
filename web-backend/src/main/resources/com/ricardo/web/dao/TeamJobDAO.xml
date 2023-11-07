@@ -9,18 +9,22 @@
         <result column="job_type" property="jobType" />
         <result column="tags" property="tags" />
         <result column="job_count" property="countNum"/>
+        <result column="min_salary" property="minSalary"/>
+        <result column="max_salary" property="maxSalary"/>
         <result column="gmt_created" property="gmtCreated"/>
         <result column="gmt_modified" property="gmtModified"/>
     </resultMap>
 
     <insert id="insertTeamJob" parameterType="com.ricardo.web.dto.TeamJobDO">
-        INSERT INTO team_job (job_name, team_id, description, content, job_type, tags,gmt_created,gmt_modified,job_count)
-        VALUES (#{jobName}, #{teamId}, #{description}, #{content}, #{jobType}, #{tags},now(),now(),#{countNum})
+        INSERT INTO team_job (job_name, team_id, description, content, job_type, tags,gmt_created,gmt_modified,job_count,min_salary,max_salary)
+        VALUES (#{jobName}, #{teamId}, #{description}, #{content}, #{jobType}, #{tags},now(),now(),#{countNum},#{minSalary},#{maxSalary})
     </insert>
 
     <update id="updateTeamJob" parameterType="com.ricardo.web.dto.TeamJobDO">
         UPDATE team_job
-        SET job_name = #{jobName},job_count=#{countNum}, team_id = #{teamId}, description = #{description}, content = #{content}, job_type = #{jobType}, tags = #{tags},gmt_modified=now()
+        SET job_name = #{jobName},job_count=#{countNum},min_salary=#{minSalary},max_salary=#{maxSalary}, team_id = #{teamId}, description = #{description}, content = #{content}, job_type =
+            #{jobType}, tags =
+            #{tags},gmt_modified=now()
         WHERE id = #{id}
     </update>
 

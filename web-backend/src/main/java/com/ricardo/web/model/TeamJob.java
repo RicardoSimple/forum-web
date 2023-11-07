@@ -17,6 +17,7 @@ public class TeamJob {
     private String type;
 
     private String[] tags;
+    private int[] salaryRange;
 
     private int count;
 
