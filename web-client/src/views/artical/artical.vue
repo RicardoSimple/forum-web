@@ -1,24 +1,28 @@
 <template>
-    <div>
-        <singleartical  :artical ="artical"></singleartical>
-    </div>
+  <div>
+    <singleartical :artical="artical"></singleartical>
+    111
+  </div>
 </template>
 <script>
+import { getCommentById } from '@/api/commentService';
 import singleartical from './singleartical.vue'
-export default{
-    components:{
+export default {
+  components: {
     singleartical
-},
-    data(){
-        return{
-            artical:{
-                artical_id: 1234,   //帖子id
-                author_id: "12345", //作者id
-                title: "标题",
-                body: "文章主体",
-                gmtCreated: "2023/11/6 16:33",
-            }
-        }
+  },
+  async beforeCreate () {
+    this.id = this.$route.params.id
+    console.log(this.id);
+    var res = (await getCommentById(this.id)).data;
+    console.log(res.data);
+    this.artical = res.data
+  },
+  data () {
+    return {
+      id: "",
+      artical: "",
     }
+  },
 }
 </script>

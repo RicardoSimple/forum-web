@@ -18,7 +18,15 @@
     <!-- 功能集 -->
     <el-col :span="17">
       <div class="grid-content bg-purple-light">
-
+        <el-menu
+          class="el-menu-demo"
+          :default-active="activeIndex"
+          mode="horizontal"
+        >
+          <el-menu-item v-if="userData!=null">
+            <router-link to="/currentUser">个人中心</router-link>
+          </el-menu-item>
+        </el-menu>
         <el-menu
           :default-active="activeIndex"
           class="el-menu-demo"
@@ -31,20 +39,6 @@
           <el-menu-item v-if="item.path != null">
             <router-link :to="item.path">{{item.name}}</router-link>
           </el-menu-item>
-
-          <el-submenu v-if="item.children != null">
-            <template slot="title">{{item.name}}</template>
-            <el-menu-item
-              v-for="(itemTwo, j) in item.children"
-              :index="i+ '-' + j"
-              :key="i+ '-' + j"
-            >
-              <router-link
-                class="funTwo"
-                :to="itemTwo.path"
-              >{{itemTwo.name}}</router-link>
-            </el-menu-item>
-          </el-submenu>
         </el-menu>
       </div>
     </el-col>

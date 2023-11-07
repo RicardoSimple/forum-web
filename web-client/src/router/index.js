@@ -10,7 +10,7 @@ const routes = [
     name: 'home',
     // component: HomeView
     component: () => import(/* webpackChunkName: "about" */ '../views/home/index.vue'),
-    redirect:'/comment',
+    redirect: '/comment',
     children: [
       {
         path: '/comment',
@@ -25,14 +25,10 @@ const routes = [
     ]
   },
   {
-    path: '/home/userhomepage1',
-    name: 'userhomepage1',
-    component: () => import(/*webpackChunkName:"about"*/'../account/userhomepage1.vue')
-  },
-  {
-    path: '/home/userhomepage2',
-    name: 'userhomepage2',
-    component: () => import(/*webpackChunkName:"about"*/'../account/userhomepage2.vue')
+    path: '/currentUser',
+    name: 'currentUser',
+    component: () => import('../account/userhomepage1.vue')
+
   },
   {
     path: '/test/a',
@@ -71,15 +67,15 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/login/register.vue')
   },
   {
-    path: '/artical',
+    path: '/artical/:id',
     name: 'artical',
     // component: HomeView
-    component: () => import( '../views/artical/artical.vue'),
-    children: [
-      {
-        path:'id',
-      }
-    ]
+    component: () => import('../views/artical/artical.vue'),
+  },
+  {
+    path: '/user/:id',
+    name: 'user',
+    component: () => import('../account/userhomepage2.vue')
   },
   {
     path: '/creat/artical',
@@ -94,7 +90,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/job/job.vue'),
     children: [
       {
-        path:'id',
+        path: ':id',
       }
     ]
   },
