@@ -19,11 +19,18 @@ public class CommentApi {
     }
 
 
-    // todo
+    @GetMapping("/getId")
     public Result GetCommentById(@RequestParam("id") String id){
-        return null;
+        return commentService.GetCommentById(id);
     }
 
-    // todo getCommontByUserIdAndUserType
-    // todo getAll
+    @GetMapping("/IdAndType")
+    public Result GetCommentByIdandType(@RequestParam("type")String type,@RequestParam("id") Long id){
+        return commentService.GetCommentByIdandType(type,id);
+    }
+
+    @GetMapping("/all")
+    public Result getAllcomment(@RequestParam("type")String type,@RequestParam("id") Long id){
+        return commentService.GetAllCommentByType(type,id);
+    }
 }
