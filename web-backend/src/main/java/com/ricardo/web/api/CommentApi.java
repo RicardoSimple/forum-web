@@ -19,7 +19,7 @@ public class CommentApi {
     }
 
 
-    @GetMapping("/getId")
+    @GetMapping("/getbyid")
     public Result GetCommentById(@RequestParam("id") String id){
         return commentService.GetCommentById(id);
     }

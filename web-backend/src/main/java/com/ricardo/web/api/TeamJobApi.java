@@ -17,7 +17,7 @@ public class TeamJobApi {
     public Result addOrUpdateTeamJob(@RequestBody TeamJobParam param){
         return teamJobService.addOrUpdateTeamJob(param);
     }
-    @GetMapping("/get")
+    @GetMapping("/getbyteamid")
     public Result  getTeamJobByTeamId(@RequestParam("teamId") String teamId){
         return teamJobService.getTeamJobByTeamId(teamId);
     }
