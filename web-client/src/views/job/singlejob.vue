@@ -23,17 +23,16 @@
                     {{tag.name}}
                     </el-tag>
                 </div>
+                <div>
+                    <p>职位类型：{{ job.type }}</p>
+                </div>
                 <div class="desc" >
                     <p >
-                    &nbsp;
-                    &nbsp;
                     {{ job.desc }}
                     </p>
                 </div>
                 <div class="content" >
                     <p >
-                    &nbsp;
-                    &nbsp;
                     {{ job.content }}
                     </p>
                 </div>
@@ -41,7 +40,8 @@
                     <p>
                     &nbsp;
                     &nbsp;
-                    预计招聘：{{ job.count }}人
+                    预计招聘：
+                    {{ job.count }}人
                     </p>
                 </div>
             </div>

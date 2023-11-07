@@ -27,9 +27,9 @@ export default{
             obj:{},
             defaultData:{
                 artical_id: 1234,   //帖子id
-                author_id: null, //作者id
-                title: null,
-                body: null,
+                author_id: 13579, //作者id
+                title: "这是标题",
+                body: "这是正文",
             },
         }
     },
@@ -56,6 +56,7 @@ export default{
                         rules:[{
                             required:true,
                             message:'请输入标题',
+                            
                         }]
                         
                     },
