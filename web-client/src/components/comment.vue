@@ -1,25 +1,29 @@
 <template>
   <div>
-    <singleComment :comment="comment"></singleComment>
+    <div
+      v-for="comment,index in comments"
+      :key="index"
+    >
+      <singleComment :comment="comment"></singleComment>
+    </div>
   </div>
 </template>
 
 <script>
+import { getAllComments } from '@/api/commentService'
 import singleComment from './singleComment.vue'
 export default {
   components: {
     singleComment
   },
+  async created () {
+    var res = (await getAllComments()).data
+    this.comments = res.data;
+    console.log(res)
+  },
   data () {
     return {
-      comment: {
-        name: "xiao",
-        title: "评论标题",
-        content: "1?5!",
-        gmtCreated: "2023-11-3 15:30",
-        userID:"1",
-        userType:"talent_user"
-      }
+      comments: [],
     }
   }
 }
