@@ -19,11 +19,12 @@
             <div class="time">{{ comment.gmtCreated }}</div>
           </div>
         </div>
-        <el-button
-          style="float: right; padding: 3px 0"
+        <el-link
+          style="float: right; padding: 3px 0 ;color:gray;"
           type="text"
           class="detailBtn"
-        >查看更多</el-button>
+          :href="pathToArtical"
+        >查看<i class="el-icon-view el-icon--right"></i> </el-link>
       </div>
       <div class="content">
         <div class="title">{{ comment.title }}</div>
@@ -71,22 +72,25 @@ export default {
       required: true,
     },
   },
-  watch:{
-    comment:{
-      handler:async function(newName,oldName){
+  computed: {
+    pathToArtical () {
+      return "/#/artical/" + this.comment.id
+    }
+  },
+  watch: {
+    comment: {
+      handler: async function (newName, oldName) {
         console.log(this.comment)
-        var res = (await getUserWithIdAndType(this.userType,this.userID)).data;
+        var res = (await getUserWithIdAndType(this.comment.userID, this.comment.userType)).data;
         console.log(res)
-        if(res.code==200){
+        if (res.code == 200) {
           this.avatarUrl = res.data.avatar;
           console.log("yes")
           console.log(this.avatarUrl)
         }
       },
-      immediate:true
+      immediate: true
     }
-  },
-  computed: {
   },
 };
 </script>
