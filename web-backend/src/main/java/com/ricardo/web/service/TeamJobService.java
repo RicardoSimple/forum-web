@@ -7,4 +7,6 @@ public interface TeamJobService {
     Result addOrUpdateTeamJob(TeamJobParam param);
 
     Result getTeamJobByTeamId(String teamId);
+
+    Result getTeamJobByTeamName(String teamname);
 }

@@ -14,4 +14,5 @@ public class Team {
     private String logo;
 
     private String link;
+
 }

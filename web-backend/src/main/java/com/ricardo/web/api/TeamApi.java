@@ -4,10 +4,7 @@ import com.ricardo.web.model.Result;
 import com.ricardo.web.model.param.TeamRequestParam;
 import com.ricardo.web.service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/team")
@@ -21,7 +18,10 @@ public class TeamApi {
         return teamService.addTeam(param);
     }
 
-    // todo getAll
+    @GetMapping("/all")
+    public Result getAllteam(@RequestParam("type")String type){
+        return teamService.getAllteam(type);
+    }
 
 
 }

@@ -56,4 +56,17 @@ public class TeamJobServiceImpl implements TeamJobService {
         }
         return Result.success(results);
     }
+
+    @Override
+    public Result getTeamJobByTeamName(String teamname) {
+        List<TeamJobDO> teamJobDOs = teamJobDAO.findTeamJobByName(teamname);
+        if(teamJobDOs==null){
+            return Result.fail(Code.FAIL_NO_DATA,"名称不存在");
+        }
+        List<TeamJob> results = new ArrayList<>();
+        for (int i = 0; i < teamJobDOs.size(); i++) {
+            results.add(teamJobDOs.get(i).toTeamJob());
+        }
+        return Result.success(results);
+    }
 }

@@ -6,4 +6,6 @@ import com.ricardo.web.model.param.TeamRequestParam;
 public interface TeamService {
 
     Result addTeam(TeamRequestParam param);
+
+    Result getAllteam(String type);
 }

@@ -1,5 +1,6 @@
 package com.ricardo.web.dto;
 
+import com.ricardo.web.model.Team;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -21,4 +22,15 @@ public class TeamDO {
     private LocalDateTime gmtCreated;
 
     private LocalDateTime gmtModified;
+
+    public Long toTeam(){
+        Team team = new Team();
+        team.setId(this.id);
+        team.setName(this.name);
+        team.setAlias(this.alias);
+        team.setIndustry(this.industry);
+        team.setLogo(this.logo);
+        team.setLink(this.link);
+        return team;
+    }
 }

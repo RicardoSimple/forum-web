@@ -22,5 +22,8 @@ public class TeamJobApi {
         return teamJobService.getTeamJobByTeamId(teamId);
     }
 
-    // todo getByname
+    @GetMapping("/getbyteamname")
+    public Result  getTeamJobByTeamName(@RequestParam("teamName") String teamname){
+        return teamJobService.getTeamJobByTeamName(teamname);
+    }
 }
