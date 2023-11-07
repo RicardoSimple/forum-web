@@ -14,15 +14,15 @@ public class TeamJobDO {
 
     private long teamId;
 
-    private String desc;
+    private String description;
 
     private String content;
 
-    private String type;
+    private String jobType;
 
     private String tags;
 
-    private int count;
+    private int countNum;
 
     private LocalDateTime gmtCreated;
     private LocalDateTime gmtModified;
@@ -32,11 +32,11 @@ public class TeamJobDO {
         teamJob.setId(this.id);
         teamJob.setJobName(this.jobName);
         teamJob.setTeamId(this.teamId);
-        teamJob.setType(this.type);
-        teamJob.setDesc(this.desc);
+        teamJob.setType(this.jobType);
+        teamJob.setDesc(this.description);
         teamJob.setContent(this.content);
         teamJob.setTags(this.tags.split("|"));
-        teamJob.setCount(this.count);
+        teamJob.setCount(this.countNum);
         return teamJob;
     }
 }

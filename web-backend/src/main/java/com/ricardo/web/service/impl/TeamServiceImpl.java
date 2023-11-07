@@ -5,6 +5,7 @@ import com.ricardo.web.dto.CommentDO;
 import com.ricardo.web.dto.TeamDO;
 import com.ricardo.web.model.Comment;
 import com.ricardo.web.model.Result;
+import com.ricardo.web.model.Team;
 import com.ricardo.web.model.param.TeamRequestParam;
 import com.ricardo.web.service.TeamService;
 import com.ricardo.web.util.Code;
@@ -41,8 +42,8 @@ public class TeamServiceImpl implements TeamService {
 
     @Override
     public Result getAllteam(String type) {
-        List<TeamDO> allteam = TeamDAO.findAllTeams();
-        List<Long> results = new ArrayList<>();
+        List<TeamDO> allteam = teamDAO.findAllTeams();
+        List<Team> results = new ArrayList<>();
         for (int i = 0; i < allteam.size(); i++) {
             results.add(allteam.get(i).toTeam());
         }

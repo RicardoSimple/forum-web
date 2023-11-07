@@ -1,24 +1,26 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ricardo.web.dao.TeamJobDAO">
-
     <resultMap id="TeamJobResultMap" type="com.ricardo.web.dto.TeamJobDO">
         <id column="id" property="id" />
         <result column="job_name" property="jobName" />
         <result column="team_id" property="teamId" />
         <result column="description" property="description" />
         <result column="content" property="content" />
-        <result column="type" property="type" />
+        <result column="job_type" property="jobType" />
         <result column="tags" property="tags" />
+        <result column="job_count" property="countNum"/>
+        <result column="gmt_created" property="gmtCreated"/>
+        <result column="gmt_modified" property="gmtModified"/>
     </resultMap>
 
     <insert id="insertTeamJob" parameterType="com.ricardo.web.dto.TeamJobDO">
-        INSERT INTO team_job (job_name, team_id, description, content, type, tags)
-        VALUES (#{jobName}, #{teamId}, #{description}, #{content}, #{type}, #{tags})
+        INSERT INTO team_job (job_name, team_id, description, content, job_type, tags,gmt_created,gmt_modified,job_count)
+        VALUES (#{jobName}, #{teamId}, #{description}, #{content}, #{jobType}, #{tags},now(),now(),#{countNum})
     </insert>
 
     <update id="updateTeamJob" parameterType="com.ricardo.web.dto.TeamJobDO">
         UPDATE team_job
-        SET job_name = #{jobName}, team_id = #{teamId}, description = #{description}, content = #{content}, type = #{type}, tags = #{tags}
+        SET job_name = #{jobName},job_count=#{countNum}, team_id = #{teamId}, description = #{description}, content = #{content}, job_type = #{jobType}, tags = #{tags},gmt_modified=now()
         WHERE id = #{id}
     </update>
 
@@ -42,4 +44,7 @@
         WHERE job_name = #{jobName}
     </select>
 
+    <select id="findAllTeamJob" resultMap="TeamJobResultMap">
+        SELECT * FROM team_job
+    </select>
 </mapper>

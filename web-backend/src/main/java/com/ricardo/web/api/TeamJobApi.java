@@ -22,8 +22,13 @@ public class TeamJobApi {
         return teamJobService.getTeamJobByTeamId(teamId);
     }
 
+    @GetMapping("/all")
+    public Result getAllTeamJob(){
+        return teamJobService.getAllTeamJob();
+    }
     @GetMapping("/getbyteamname")
     public Result  getTeamJobByTeamName(@RequestParam("teamName") String teamname){
         return teamJobService.getTeamJobByTeamName(teamname);
     }
+
 }

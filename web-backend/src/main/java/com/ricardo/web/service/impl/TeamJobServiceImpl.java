@@ -27,10 +27,10 @@ public class TeamJobServiceImpl implements TeamJobService {
         teamJobDO.setTeamId(Long.parseLong(param.getTeamId()));
         teamJobDO.setJobName(param.getJobName());
         teamJobDO.setTags(String.join("|", param.getTags()));
-        teamJobDO.setType(param.getType());
-        teamJobDO.setDesc(param.getDesc());
+        teamJobDO.setJobType(param.getType());
+        teamJobDO.setDescription(param.getDesc());
         teamJobDO.setContent(param.getContent());
-        teamJobDO.setCount(param.getCount());
+        teamJobDO.setCountNum(param.getCount());
 
         if (param.getId().isBlank()) {
             teamJobDAO.insertTeamJob(teamJobDO);
@@ -66,6 +66,17 @@ public class TeamJobServiceImpl implements TeamJobService {
         List<TeamJob> results = new ArrayList<>();
         for (int i = 0; i < teamJobDOs.size(); i++) {
             results.add(teamJobDOs.get(i).toTeamJob());
+        }
+        return Result.success(results);
+    }
+
+    @Override
+    public Result getAllTeamJob() {
+        List<TeamJobDO> allTeamJob = teamJobDAO.findAllTeamJob();
+        List<TeamJob> results = new ArrayList<>();
+
+        for (TeamJobDO teamJobDO : allTeamJob) {
+            results.add(teamJobDO.toTeamJob());
         }
         return Result.success(results);
     }

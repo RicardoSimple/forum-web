@@ -8,5 +8,7 @@ public interface TeamJobService {
 
     Result getTeamJobByTeamId(String teamId);
 
+    Result getAllTeamJob();
+
     Result getTeamJobByTeamName(String teamname);
 }

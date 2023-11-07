@@ -13,9 +13,7 @@ public interface TeamDAO {
 
     TeamDO findTeamById(long id);
 
-    static List<TeamDO> findAllTeams() {
-        return null;
-    }
+    List<TeamDO> findAllTeams();
 
     void deleteTeam(long id);
 

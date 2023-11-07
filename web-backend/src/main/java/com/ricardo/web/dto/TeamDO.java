@@ -23,7 +23,7 @@ public class TeamDO {
 
     private LocalDateTime gmtModified;
 
-    public Long toTeam(){
+    public Team toTeam(){
         Team team = new Team();
         team.setId(this.id);
         team.setName(this.name);
