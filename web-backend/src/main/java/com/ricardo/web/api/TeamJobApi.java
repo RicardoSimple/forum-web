@@ -31,4 +31,9 @@ public class TeamJobApi {
         return teamJobService.getTeamJobByTeamName(teamname);
     }
 
+    @GetMapping("/get")
+    public Result getTeamJobById(@RequestParam("id") String Id){
+        return teamJobService.getTeamJobById(Id);
+    }
+
 }

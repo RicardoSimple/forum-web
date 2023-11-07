@@ -1,6 +1,6 @@
 <template>
     <div class="artical" 
-    style="margin-left : 10%;"
+    style="margin-left : 20%;"
     >
       <div class="title">{{ artical.title }}</div>
       <div class="author">
@@ -8,20 +8,28 @@
             <!--获取用户头像-->
             <el-avatar
                 :size="50"
-                :src= "img"
+                :src= "avaterUrl"
             ></el-avatar>
-            <span >{{ author_name }}</span>
-            <span style="font-size: 15px;">发布时间：{{ artical.gmtCreated }}</span>
+            <span >{{ artical.name }}</span>
+            <div style="font-size: 15px;margin-top: 10px;">发布时间：{{ artical.gmtCreated }}</div>
         </router-link>
       </div>
       <div class="artical_body">
-        <span>  {{ artical.body }}</span>
+        <span>  {{ artical.content }}</span>
       </div>
     </div>
 </template>
 <script>
+import { getUserWithIdAndType } from '@/api/loginService'
+
+
 export default{
     name:"artical",
+    data(){
+        return {
+            avaterUrl:"",
+        }
+    },
     props: {
         artical:{
             type:Object,
@@ -32,14 +40,26 @@ export default{
         
         img: function() {
             //根据用户id查找图像并返回图片链接
-            return this.artical.author_id;
+            return this.artical.userID
         },
-        author_name: function(){
-            //根据用户id返回用户名,未完成
-            return this.artical.author_id;
+        // author_name: function(){
+        //     //根据用户id返回用户名,未完成
+        //     return this.artical.author_id;
+        // }
+    },
+    watch:{
+        artical:{
+            handler: async function(newName,oldName){
+                console.log(this.artical)
+                var res= (await getUserWithIdAndType(this.artical.userID,this.artical.userType)).data;
+                console.log(res)
+                if(res.code==200){
+                    this.avaterUrl=res.data.avatar;
+                    console.log("yes")
+                    console.log(this.avaterUrl)
+                }
+            }
         }
-
-        
     }
 
 
@@ -53,7 +73,7 @@ export default{
     font-size:300%;
     font-weight: bold;
     text-align: left;
-    margin-right: 10%;
+    margin-right: 20%;
 }
 .author{
     margin-top: 10px;
@@ -62,11 +82,12 @@ export default{
     
 }
 .artical_body{
-    margin-top: 10px;
+    margin-top: 20px;
     font-size: 150%;
     text-align: left;
-    margin-right: 10%;
+    margin-right: 20%;
+    
     box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)
-
+    
 }
 </style>

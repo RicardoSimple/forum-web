@@ -10,14 +10,14 @@
             v-model="obj"
             :option="option"
             ></avue-form>
-            <span class="tags" style="position:relative;left: -330px;">
+            <div class="tags" style="position:relative;margin-left:45px   ">
                 <label style="margin-right: 10px;">标签:</label>
                 <el-tag 
                 v-for="tag in defaultData.tags"
                 closable
                 :disable-transitions="false" 
                 @close="handleClose(tag)"
-                :key="tag.name">{{ tag.name }}</el-tag>
+                :key="tag.name">{{ tag}}</el-tag>
                 <el-input
                 class="input-new-tag"
                 v-if="inputVisible"
@@ -29,7 +29,7 @@
                 >
                 </el-input>
                 <el-button  v-else class="button-new-tag" size="small" @click="showInput">+ New Tag</el-button>
-            </span>
+            </div>
             <div>
                 <el-button @click="submit">发布</el-button>
                 <el-button>清空</el-button>
@@ -51,11 +51,10 @@ export default{
                 content :null,
                 type:null,
                 tags: [
-                    { name: '标签一'},
-                    { name: '标签二'},
-                    { name: '标签三'},
-                    { name: '标签四'},
-                    { name: '标签五'},
+                    '标签1',
+                    '标签2',
+                    '标签3',
+                    '标签4',
                 ],
                 count:10,
                 
@@ -164,7 +163,7 @@ export default{
         handleInputConfirm() {
             let inputValue = this.inputValue;
             if (inputValue) {
-                this.dynamicTags.push(inputValue);
+                this.defaultData.tags.push(inputValue);
         }
         this.inputVisible = false;
         this.inputValue = '';

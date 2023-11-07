@@ -58,6 +58,18 @@ public class TeamJobServiceImpl implements TeamJobService {
     }
 
     @Override
+    public Result getTeamJobById(String Id) {
+        Long id=Long.valueOf(Id);
+        if(id<0)
+            return Result.fail(Code.FAIL_NO_DATA,"id小于0");
+        TeamJobDO teamJobDO =teamJobDAO.findTeamJobById(Id);
+        if(teamJobDO==null){
+            return Result.fail(Code.FAIL_NO_DATA,"帖子id不存在");
+        }
+        return Result.success(teamJobDO.toTeamJob());
+    }
+
+    @Override
     public Result getTeamJobByTeamName(String teamname) {
         List<TeamJobDO> teamJobDOs = teamJobDAO.findTeamJobByName(teamname);
         if(teamJobDOs==null){
@@ -69,6 +81,8 @@ public class TeamJobServiceImpl implements TeamJobService {
         }
         return Result.success(results);
     }
+
+
 
     @Override
     public Result getAllTeamJob() {

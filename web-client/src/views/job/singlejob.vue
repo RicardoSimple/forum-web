@@ -4,6 +4,7 @@
             <div class="title">{{ job.jobName }}</div>
             <div class="user">
                 <router-link to="/home/userhomepage1" style="text-decoration: none;color: black;" >
+                    <!-- 获取用户头像 -->
                     <el-avatar
                     :size="50"
                     :src= "img"
@@ -11,16 +12,17 @@
                     <span class="teamname">{{teamName}}</span>
                 </router-link>
             </div>
-            <div class="body">
+        </div>
+        <div class="body">
                 <div>
                     <h4>职位描述</h4>
                 </div>
                 <div >
                     <el-tag
                     v-for="tag in job.tags"
-                    :key="tag.name"
+                    :key="tag"
                     class="tags">
-                    {{tag.name}}
+                    {{tag}}
                     </el-tag>
                 </div>
                 <div>
@@ -49,7 +51,6 @@
                 <el-button ><!--投递简历功能，未实现，需要获取当前用户id-->
                     投递简历
                 </el-button>
-            </div>
         </div>
     </div>
 </template>
@@ -80,7 +81,13 @@ export default{
 <style>
 .head{
     text-align: left;
-    margin-left: 10%;   
+    margin-left: 15%;   
+    margin-right: 15%;
+}
+.body{
+    text-align: left;
+    margin-left: 15%;
+    margin-right: 15%;
 }
 .title{
     font-size:300%;

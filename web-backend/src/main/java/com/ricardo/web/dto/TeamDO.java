@@ -31,6 +31,6 @@ public class TeamDO {
         team.setIndustry(this.industry);
         team.setLogo(this.logo);
         team.setLink(this.link);
-        return team.getId();
+        return team;
     }
 }

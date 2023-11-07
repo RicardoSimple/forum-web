@@ -11,4 +11,6 @@ public interface TeamJobService {
     Result getAllTeamJob();
 
     Result getTeamJobByTeamName(String teamname);
+
+    Result getTeamJobById(String id);
 }

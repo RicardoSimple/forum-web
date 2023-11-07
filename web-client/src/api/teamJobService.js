@@ -17,6 +17,14 @@ export async function addOrUpdateTeamJob (param) {
 export async function getTeamJobByTeamId (teamId) {
   return await service.get('/teamJob/getbyteamid?teamId=' + teamId);
 }
+/**
+ * 根据id获岗位
+ * @param {id:string} id 
+ * @returns 
+ */
+export async function getTeamJobById (id) {
+  return await service.get('/teamjob/get?id=' + id)
+}
 
 /**
  * 获取所有岗位

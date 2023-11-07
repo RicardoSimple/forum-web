@@ -12,7 +12,7 @@ public interface TeamJobDAO {
 
     void updateTeamJob(TeamJobDO teamJob);
 
-    TeamJobDO findTeamJobById(long id);
+    TeamJobDO findTeamJobById(String id);
 
     List<TeamJobDO> findTeamJobsByTeamId(String teamId);
 

@@ -1,7 +1,6 @@
 <template>
   <div>
     <singleartical :artical="artical"></singleartical>
-    111
   </div>
 </template>
 <script>
