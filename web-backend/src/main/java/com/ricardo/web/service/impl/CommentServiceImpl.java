@@ -52,7 +52,7 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public Result getCommentByUserIdAndType(String type, Long id) {
-        if(!type.equals(Const.TALENT_TYPE)&&!type.equals(Const.TEAM_TYPE)){
+        if((!type.equals(Const.TALENT_TYPE))&&(!type.equals(Const.TEAM_TYPE))){
             return Result.fail(Code.FAIL_ERROR_PARAM,"参数错误");
         }
         CommentDO commentDO = new CommentDO();

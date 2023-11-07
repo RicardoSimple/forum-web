@@ -74,10 +74,13 @@ export default {
   watch:{
     comment:{
       handler:async function(newName,oldName){
+        console.log(this.comment)
         var res = (await getUserWithIdAndType(this.userType,this.userID)).data;
+        console.log(res)
         if(res.code==200){
           this.avatarUrl = res.data.avatar;
-
+          console.log("yes")
+          console.log(this.avatarUrl)
         }
       },
       immediate:true

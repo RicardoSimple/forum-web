@@ -19,7 +19,6 @@ export default {
   async created () {
     var res = (await getAllComments()).data
     this.comments = res.data;
-    console.log(res)
   },
   data () {
     return {
