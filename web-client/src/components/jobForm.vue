@@ -49,7 +49,6 @@
           class="footer-right"
           style="float: right;padding-bottom: 10px;"
         >
-
           <div>{{ job.team.industry }}</div>
         </div>
       </div>
@@ -59,6 +58,8 @@
 
 
 <script>
+import { getTeamById } from '../api/teamService'
+
 export default {
   name: 'JobForm',
   data () {
@@ -78,12 +79,13 @@ export default {
       return this.job.avatarUrl;
     },
   },
-  watch:{
-    job:{
-      handler:async function(oldName,newName){
-        
+  watch: {
+    job: {
+      handler: async function (oldName, newName) {
+        var res = (await getTeamById(this.job.teamId)).data;
+        console.log(res)
       },
-      immediate:true
+      immediate: true
     }
   }
 };
