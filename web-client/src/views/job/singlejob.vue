@@ -1,16 +1,17 @@
 <template>
     <div class="job">
         <div class="head">
-            <div class="title">{{ job.jobName }}</div>
+            <div class="title">
+                {{ job.jobName }}
+                <span style="font-size: 80%;color: red;">{{ job.salaryRange[0]/1000 }}K-{{ job.salaryRange[1]/1000 }}K</span>
+            </div>
             <div class="user">
-                <router-link to="/home/userhomepage1" style="text-decoration: none;color: black;" >
-                    <!-- 获取用户头像 -->
-                    <el-avatar
-                    :size="50"
-                    :src= "img"
-                    ></el-avatar>
-                    <span class="teamname">{{teamName}}</span>
-                </router-link>
+                <el-link :href="teampage" style="text-align: left;">
+                    <div class="teamname">{{teamname}}</div>
+                    <div class="teamindustry">行业：{{ teamindustry }}</div>
+                    <div class="teamlink">官网:{{ teamlink }}</div>
+                    
+                </el-link>
             </div>
         </div>
         <div class="body">
@@ -56,7 +57,7 @@
 </template>
 <script>
 import router from '@/router';
-
+import {getTeamById} from '@/api/teamService'
 export default{
     name: "singlejob",
     props: {
@@ -65,16 +66,31 @@ export default{
             retquired: true,
         },
     },
+    data(){
+        return {
+            teamname:"",
+            teamlink:"",
+            teamindustry:"",
+        }
+    },
     computed: {
-        teamName: function() {
-            //根据teamid返回企业用户的昵称
-            return this.job.teamId;
-        },
-        img: function () {
-            // 计算头像 URL 的逻辑，可以从 comment 中获取
-            return this.job.id;
-        },
-    },  
+       teampage() {
+        return "/user/:"+this.job.teamId;
+       }
+
+    },
+    watch:{
+        job:{
+            handler: async function(newName,oldName){
+                console.log(this.job)
+                var res =(await getTeamById(this.job.teamId) ).data;
+                console.log(res);
+                this.teamname=res.data.name;
+                this.teamlink=res.data.link;
+                this.teamindustry=res.data.industry;
+            }
+        }
+    }  
 
 };
 </script>

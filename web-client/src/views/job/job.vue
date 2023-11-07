@@ -10,6 +10,7 @@ export default {
     components:{
         singlejob
     },
+    
     async beforeCreate(){
         this.id=this.$route.params.id;
         console.log(this.id);
