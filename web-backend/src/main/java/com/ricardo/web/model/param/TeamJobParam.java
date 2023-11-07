@@ -15,7 +15,7 @@ public class TeamJobParam {
 
     private String content;
 
-    private String type;
+    private String type; //全职 兼职 线上。。
 
     private String[] tags;
 

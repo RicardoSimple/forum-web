@@ -16,7 +16,9 @@ export default {
         name: "xiao",
         title: "评论标题",
         content: "1?5!",
-        gmtCreated: "2023-11-3 15:30"
+        gmtCreated: "2023-11-3 15:30",
+        userID:"1",
+        userType:"talent_user"
       }
     }
   }

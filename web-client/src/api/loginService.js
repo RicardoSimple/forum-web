@@ -27,6 +27,15 @@ export async function login (param) {
   return response;
 }
 
+/**
+ * 根据id和类型获取用户
+ * @param {id:string} id 
+ * @param {type:string} type 
+ * @returns 
+ */
+export async function getUserWithIdAndType (id, type) {
+  return await service.get(`/user/get?id=${id}&type=${type}`)
+}
 
 /**
  * 登出接口

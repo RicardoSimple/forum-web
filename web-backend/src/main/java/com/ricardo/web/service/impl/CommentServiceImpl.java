@@ -4,6 +4,7 @@ import com.ricardo.web.dao.CommentDAO;
 import com.ricardo.web.dto.CommentDO;
 import com.ricardo.web.dto.TalentUserDO;
 import com.ricardo.web.dto.TeamUserDO;
+import com.ricardo.web.model.Comment;
 import com.ricardo.web.model.Result;
 import com.ricardo.web.model.TalentUser;
 import com.ricardo.web.model.param.MessageAddParam;
@@ -45,45 +46,35 @@ public class CommentServiceImpl implements CommentService {
         if (id < 0) {
             return Result.fail(Code.FAIL_NO_ZERO, "id小于0");
         }
-        List<CommentDO> commentDOs = (List<CommentDO>) CommentDAO.findMessageById(id);
-        List<Long> results = new ArrayList<>();
-        for (int i = 0; i < commentDOs.size(); i++) {
-            results.add(commentDOs.get(i).getId());
+        CommentDO commentById = commentDAO.findCommentById(id);
+        return Result.success(commentById.toComment());
+    }
+
+    @Override
+    public Result getCommentByUserIdAndType(String type, Long id) {
+        if(!type.equals(Const.TALENT_TYPE)&&!type.equals(Const.TEAM_TYPE)){
+            return Result.fail(Code.FAIL_ERROR_PARAM,"参数错误");
+        }
+        CommentDO commentDO = new CommentDO();
+        commentDO.setUserType(type);
+        commentDO.setUserID(id);
+        List<CommentDO> commentDOS = commentDAO.findCommentByUserIdAndType(commentDO);
+        List<Comment> results = new ArrayList<>();
+        for (CommentDO aDo : commentDOS) {
+            results.add(aDo.toComment());
         }
         return Result.success(results);
     }
 
-    @Override
-    public Result GetCommentByIdandType(String type, Long id) {
-        if(type.equals(Const.TALENT_TYPE)){
-            CommentDO GetCommentById = CommentDAO.findMessageById(id);
-            if (GetCommentById == null) {
-                return Result.fail(Code.FAIL_NO_DATA, "id错误");
-            }
-            return Result.success(GetCommentById);
-        }
-        CommentDO CommentById = CommentDAO.findMessageById(id);
-        if(CommentById==null){
-            return Result.fail(Code.FAIL_NO_DATA,"id错误");
-        }
-        return Result.success(CommentById);
-    }
-
 
 
     @Override
-    public Result GetAllCommentByType(String type,Long id) {
-        if(type.equals(Const.TALENT_TYPE)){
-            CommentDO CommentById = CommentDAO.findMessageById(id);
-            if(CommentById==null){
-                return Result.fail(Code.FAIL_NO_DATA,"id错误");
-            }
-            return Result.success(CommentById);
+    public Result GetAllComment() {
+        List<CommentDO> allComment = commentDAO.findAllComment();
+        List<Comment> results = new ArrayList<>();
+        for (CommentDO commentDO : allComment) {
+            results.add(commentDO.toComment());
         }
-        CommentDO CommentById = CommentDAO.findMessageById(id);
-        if(CommentById==null){
-            return Result.fail(Code.FAIL_NO_DATA,"id错误");
-        }
-        return Result.success(CommentById);
+        return Result.success(results);
     }
 }

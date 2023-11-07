@@ -8,7 +8,7 @@ public interface CommentService {
 
     Result GetCommentById(String id);
 
-    Result GetCommentByIdandType(String userType, Long id);
-    Result GetAllCommentByType(String type,Long id);
+    Result getCommentByUserIdAndType(String userType, Long id);
+    Result GetAllComment();
 
 }

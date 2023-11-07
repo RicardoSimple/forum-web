@@ -27,7 +27,7 @@
           <router-view></router-view>
         </el-main>
       </el-container>
-      <el-aside width="200px">Aside</el-aside>
+      <el-aside width="400px">Aside</el-aside>
     </el-container>
 
   </div>

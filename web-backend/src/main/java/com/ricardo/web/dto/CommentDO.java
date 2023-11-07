@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 public class CommentDO {
     private long id;
     private String name;
-    private String userID;
+    private long userID;
     private String userType;
     private String title;
     private String content;
@@ -20,7 +20,7 @@ public class CommentDO {
         Comment comment =new Comment();
         comment.setId(this.id);
         comment.setName(this.name);
-        comment.setUserID(this.userID);
+        comment.setUserID(String.valueOf(this.userID));
         comment.setUserType(this.userType);
         comment.setTitle(this.title);
         comment.setContent(this.content);

@@ -24,13 +24,13 @@ public class CommentApi {
         return commentService.GetCommentById(id);
     }
 
-    @GetMapping("/IdAndType")
-    public Result GetCommentByIdandType(@RequestParam("type")String type,@RequestParam("id") Long id){
-        return commentService.GetCommentByIdandType(type,id);
+    @GetMapping("/userIdAndType")
+    public Result GetCommentByIdAndType(@RequestParam("type")String type,@RequestParam("userId") Long id){
+        return commentService.getCommentByUserIdAndType(type,id);
     }
 
     @GetMapping("/all")
-    public Result getAllcomment(@RequestParam("type")String type,@RequestParam("id") Long id){
-        return commentService.GetAllCommentByType(type,id);
+    public Result getAllComment(){
+        return commentService.GetAllComment();
     }
 }

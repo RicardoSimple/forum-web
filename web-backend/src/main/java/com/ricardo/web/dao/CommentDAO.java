@@ -8,16 +8,14 @@ import java.util.List;
 
 @Mapper
 public interface CommentDAO {
-    static List<CommentDO> findAllComment() {
-        return null;
-    }
+    List<CommentDO> findAllComment();
 
     void insertMessage(CommentDO commentDO);
     void updateMessage(CommentDO commentDO);
 
-    static CommentDO findMessageById(long Id) {
-        return null;
-    }
+    CommentDO findCommentById(long id);
+
+    List<CommentDO> findCommentByUserIdAndType(CommentDO commentDO);
 
     void deleteMessage(long Id);
 
