@@ -39,6 +39,7 @@ export default{
             userData:null,
         }
     },
+    props:{},
     methods: {
       onSubmit() {
         console.log('submit!');

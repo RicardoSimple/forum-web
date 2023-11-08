@@ -11,4 +11,5 @@ public interface CommentService {
     Result getCommentByUserIdAndType(String userType, String id);
     Result GetAllComment();
 
+    Result deleteCommentById(String id);
 }

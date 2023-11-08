@@ -318,7 +318,7 @@ export default {
     this.obj = this.defaultData
     var teamList = res.data;
     for (var i = 0; i < res.data.length; i++) {
-      this.teamDicData.push({label:teamList[i].name,value:teamList[i].id}) 
+      this.teamDicData.push({ label: teamList[i].name, value: teamList[i].id })
     }
   },
   methods: {
@@ -338,7 +338,7 @@ export default {
         this.$message.success("注册成功！请重新登录")
         window.location.href = "/#/login"
       } else {
-        this.$message.error("注册失败")
+        this.$message.error("手机号已注册")
       }
     },
   },

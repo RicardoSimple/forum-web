@@ -30,6 +30,11 @@ const routes = [
     component: () => import('../views/artical/edit.vue')
   },
   {
+    path: '/editJob/:id',
+    name: 'editJob',
+    component: () => import('../views/job/edit.vue')
+  },
+  {
     path: '/currentUser',
     name: 'currentUser',
     component: () => import('../account/userhomepage1.vue'),

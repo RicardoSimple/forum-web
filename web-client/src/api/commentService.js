@@ -35,3 +35,12 @@ export async function getCommentById (id) {
 export async function GetCommentByIdAndType (type, userId) {
   return await service.get(`/comment/userIdAndType?type=${type}&userId=${userId}`)
 }
+
+/**
+ * 删除帖子
+ * @param {string} id 
+ * @returns 
+ */
+export async function deleteCommentById (id) {
+  return await service.delete("/comment/delete?id=" + id);
+}
