@@ -41,7 +41,7 @@ export default{
     this.userType=this.$route.query.userType
     console.log(this.userType)
     console.log(this.userId)
-    this.userData=(await getUserWithIdAndType(this.userType,this.userId)).data
+    this.userData=(await getUserWithIdAndType(this.userId,this.userType)).data
     console.log(this.userData)
    
   },

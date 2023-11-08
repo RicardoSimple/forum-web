@@ -23,7 +23,8 @@ public class UserApi {
 
     @GetMapping("/get")
     public Result getUserWithIdAndType(@RequestParam("id")String id,@RequestParam("type")String type){
-        if((!type.equals(Const.TALENT_TYPE))&&(!type.equals(Const.TEAM_TYPE))){
+
+        if(!(type.equals(Const.TALENT_TYPE)||type.equals(Const.TEAM_TYPE))){
             return Result.fail(Code.FAIL_ERROR_PARAM,"用户类型错误");
         }
         return userService.getUserByIdAndType(type,Long.valueOf(id));
