@@ -94,15 +94,18 @@ const routes = [
     path: '/user/:id',
     name: 'user',
     component: () => import('../account/userhomepage2.vue'),
-    redirect:'/user/:id/articcal',
     children:[
       {
-        path:'/user/:id/artical',
+        path:'/',
+        redirect:'artical'
+      },
+      {
+        path:'artical',
         name:'userartical',
         component:()=>import('../account/userhomepage2_comment.vue')
       },
       {
-        path:'/user/:id/createdjob',
+        path:'createdjob',
         name:'userjob',
         component:()=>import('../account/userhomepage2_createdjob.vue')
       }

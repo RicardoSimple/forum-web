@@ -51,12 +51,15 @@
 <script>
 import router from '@/router'
 import { register } from '@/api/loginService'
+import { getAllTeam } from '@/api/teamService'
 export default {
   name: "register",
   data () {
     return {
       obj: {},
       userType: 'talent_user',
+      teamDicData: [
+      ],
       defaultData: {
         userType: "talent_user",
         nickName: null,
@@ -271,16 +274,7 @@ export default {
             showWordLimit: true,
             span: 20,
             type: 'select', // 添加这一行
-            dicData: [      // 添加下拉选项
-              {
-                label: '南京邮电大学',
-                value: '1',
-              },
-              {
-                label: '字节跳动',
-                value: '2',
-              },
-            ],
+            dicData: this.teamDicData,
             rules: [
               {
                 required: true,
@@ -319,8 +313,14 @@ export default {
       }
     },
   },
-  created () {
+  async created () {
+    var res = (await getAllTeam()).data
+    console.log(res);
     this.obj = this.defaultData
+    var teamList = res.data;
+    for (var i = 0; i < res.data.length; i++) {
+      this.teamDicData.push({label:teamList[i].name,value:teamList[i].id}) 
+    }
   },
   methods: {
     emptytChange () {
@@ -331,12 +331,13 @@ export default {
         this.$message.error("两次输入的密码不一致")
         throw new Error("两次输入的密码不一致")
       }
+      this.obj.userType = this.userType;
       console.log(this.obj);
       var res = (await register(this.obj)).data;
       console.log(res);
       if (res.code == '200') {
         this.$message.success("注册成功！请重新登录")
-        //window.location.href = "/#/login"
+        window.location.href = "/#/login"
       } else {
         this.$message.error("注册失败")
       }

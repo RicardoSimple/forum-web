@@ -16,6 +16,7 @@
               style="float: right; padding: 3px 0"
               type="text"
               class="detailBtn"
+              @click="jumpToDetail"
             >详情</el-button>
           </div>
           <div class="salary"><span style="color: rgb(209, 42, 42);">{{ salary}}</span>K/月</div>
@@ -89,6 +90,11 @@ export default {
         this.team = res.data;
       },
       immediate: true
+    }
+  },
+  methods:{
+    jumpToDetail(){
+      window.location.href='/#/jobdetail/'+this.job.id;
     }
   }
 };

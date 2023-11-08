@@ -47,7 +47,7 @@ export default{
         //     return this.artical.author_id;
         // }
         pasTouser(){
-            return "/user/"+this.artical.userID+"?userType="+this.artical.userType;
+            return "/#/user/"+this.artical.userID+"?userType="+this.artical.userType;
         }
     },
     watch:{

@@ -6,7 +6,7 @@
                 <span style="font-size: 80%;color: red;">{{ job.salaryRange[0]/1000 }}K-{{ job.salaryRange[1]/1000 }}K</span>
             </div>
             <div class="user">
-                <el-link :href="teampage" style="text-align: left;">
+                <el-link :href="teamlink" style="text-align: left;">
                     <div class="teamname">{{teamname}}</div>
                     <div class="teamindustry">行业：{{ teamindustry }}</div>
                     <div class="teamlink">官网:{{ teamlink }}</div>

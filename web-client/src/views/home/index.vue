@@ -28,12 +28,66 @@
         </el-main>
       </el-container>
       <el-aside width="300px">
-        <el-card v-if="userData!=null" class="aside-card">
+        <el-card
+          v-if="userData!=null"
+          class="aside-card"
+        >
           <div
             slot="header"
             class="clearfix"
           >
             <span>操作卡片</span>
+            <el-button
+              style="float: right; padding: 3px 0"
+              type="text"
+            >操作按钮</el-button>
+          </div>
+          <div style="display: flex; flex-direction: column;flex: none;align-items: center;
+          justify-content: center;">
+            <el-button
+              type=""
+              icon="el-icon-user"
+              class="btn"
+              @click="jumpToComment"
+              round
+            >我的帖子</el-button>
+            <el-button
+              type=""
+              icon="el-icon-user"
+              class="btn"
+              @click="jumpToNewComment"
+              round
+            >发布帖子</el-button>
+            <el-button
+              type=""
+              class="btn"
+              icon="el-icon-user"
+              @click="jumpToJob"
+              v-if="userData!=null&&userData.userType=='team_user'"
+              round
+            >管理岗位</el-button>
+            <el-button
+              type=""
+              class="btn"
+              icon="el-icon-user"
+              @click="jumpToNewJob"
+              v-if="userData!=null&&userData.userType=='team_user'"
+              round
+            >发布岗位</el-button>
+          </div>
+          <div>
+
+          </div>
+        </el-card>
+        <el-card
+          class="aside-card"
+          style="margin-top: 10px;"
+        >
+          <div
+            slot="header"
+            class="clearfix"
+          >
+            <span>企业</span>
             <el-button
               style="float: right; padding: 3px 0"
               type="text"
@@ -64,6 +118,18 @@ export default {
   methods: {
     handleSelect (key, keyPath) {
       console.log(key, keyPath);
+    },
+    jumpToComment () {
+      window.location.href = "/#/currentUser/myartical"
+    },
+    jumpToJob () {
+      window.location.href = "/#/currentUser/myCreatedjob"
+    },
+    jumpToNewComment () {
+      window.location.href = "/#/creat/artical"
+    },
+    jumpToNewJob () {
+      window.location.href = "/#/creat/job"
     }
   }
 }
@@ -85,5 +151,9 @@ export default {
 .aside-card {
   height: 400px;
   position: sticky;
+}
+.btn {
+  width: 180px;
+  margin-bottom: 10px;
 }
 </style>

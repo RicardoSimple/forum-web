@@ -1,5 +1,5 @@
 <template>
-  <div class="comment">
+  <div class="comment" style="margin-bottom: 10px;">
     <el-card
       class="box-card"
       shadow="hover"
@@ -43,12 +43,7 @@
           ></el-button>
           <el-button
             type="success"
-            icon="el-icon-check"
-            circle
-          ></el-button>
-          <el-button
-            type="info"
-            icon="el-icon-message"
+            icon="el-icon-view"
             circle
           ></el-button>
         </div>
