@@ -27,8 +27,9 @@
                 @keyup.enter.native="handleInputConfirm"
                 @blur="handleInputConfirm"
                 >
+
                 </el-input>
-                <el-button  v-else class="button-new-tag" size="small" @click="showInput">+ New Tag</el-button>
+                <el-button  v-else class="button-new-tag" size="small" @click="showInput">+ New Tag</el-button>    
             </div>
             <div>
                 <el-button @click="submit">发布</el-button>
@@ -51,12 +52,10 @@ export default{
                 content :null,
                 type:null,
                 tags: [
-                    '标签1',
-                    '标签2',
-                    '标签3',
-                    '标签4',
+                    
                 ],
                 count:10,
+                salaryRange:[],
                 
             },
             inputVisible: false,
@@ -139,13 +138,35 @@ export default{
                         prop: 'count',
                         min: 1,
                         max: 100,
-                        value:0,
                         readonly:true,
                         type:'number', 
                         rules:[{
                             required:true,
                         }]
-                    }
+                    },
+                    {
+                        label:'最低薪资',
+                        controlsPosition: '',
+                        prop: 'salaryRange[0]',
+                        min: 0,
+                        readonly:true,
+                        type:'number', 
+                        rules:[{
+                            required:true,
+                        }]
+                    },
+                    {
+                        label:'最高薪资',
+                        controlsPosition: '',
+                        prop: 'salaryRange[1]',
+                        min: 0,
+                        readonly:true,
+                        type:'number', 
+                        rules:[{
+                            required:true,
+                        }]
+                    },
+                    
                 ]
             }
         }
@@ -169,7 +190,8 @@ export default{
         this.inputValue = '';
       }
 
-    }
+    },
+    //需要根据当前用户id获取teamid
     
 }
 </script>

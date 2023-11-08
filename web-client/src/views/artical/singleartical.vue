@@ -4,7 +4,7 @@
     >
       <div class="title">{{ artical.title }}</div>
       <div class="author">
-        <router-link to="/home/userhomepage1" style="text-decoration: none;color: black;">
+        <el-link :href="this.pasTouser" style="text-decoration: none;color: black;">
             <!--获取用户头像-->
             <el-avatar
                 :size="50"
@@ -12,7 +12,7 @@
             ></el-avatar>
             <span >{{ artical.name }}</span>
             <div style="font-size: 15px;margin-top: 10px;">发布时间：{{ artical.gmtCreated }}</div>
-        </router-link>
+        </el-link>
       </div>
       <div class="artical_body">
         <span>  {{ artical.content }}</span>
@@ -28,6 +28,7 @@ export default{
     data(){
         return {
             avaterUrl:"",
+            pasTouser:"",
         }
     },
     props: {
@@ -38,10 +39,10 @@ export default{
     },
     computed:{
         
-        img: function() {
-            //根据用户id查找图像并返回图片链接
-            return this.artical.userID
-        },
+        // img: function() {
+        //     //根据用户id查找图像并返回图片链接
+        //     return this.artical.userID
+        // },
         // author_name: function(){
         //     //根据用户id返回用户名,未完成
         //     return this.artical.author_id;
@@ -53,11 +54,13 @@ export default{
                 console.log(this.artical)
                 var res= (await getUserWithIdAndType(this.artical.userID,this.artical.userType)).data;
                 console.log(res)
+                this.pasTouser="/#/user/"+this.artical.userID;
                 if(res.code==200){
                     this.avaterUrl=res.data.avatar;
                     console.log("yes")
                     console.log(this.avaterUrl)
                 }
+
             }
         }
     }

@@ -14,23 +14,26 @@
         ></avue-form>
         <div>
             <el-button @click="submit">发布</el-button>
-            <el-button>清空</el-button>
+            <el-button @click ="clearanything">清空</el-button>
         </div>
     </el-card>
     </div>
 </template>
 <script>
+import {addOrUpdateComment} from '@/api/commentService'
 export default{
     name :"new_artical",
     data(){
         return{
             obj:{},
             defaultData:{
-                artical_id: 1234,   //帖子id
-                author_id: 13579, //作者id
-                title: "这是标题",
-                body: "这是正文",
+                name:null,
+                userID:null,
+                userType:null,
+                title:null,
+                content:null,
             },
+            userData:null,
         }
     },
     props:{
@@ -46,7 +49,7 @@ export default{
                 column:[
                     {
                         label:'标题',
-                        prop: 'ititle',
+                        prop: 'title',
                         type: 'textarea',
                         span:23,
                         minRows: 2,
@@ -62,7 +65,7 @@ export default{
                     },
                     {
                         label:'正文',
-                        prop:'body',
+                        prop:'content',
                         type:'textarea',
                         span:23,
                         minRows:20,
@@ -79,7 +82,40 @@ export default{
 
             }
         }
-    }   
+    },
+    created () {
+        this.userData=JSON.parse(sessionStorage.getItem("userData")),
+        console.log(this.userData),
+        this.defaultData.userType=this.userData.userType,
+        this.defaultData.name=this.userData.nickName,
+        this.defaultData.userID=this.userData.id;
+        this.obj = this.defaultData
+    },
+    methods:{
+
+        async submit(){
+            
+            console.log(this.obj);
+            
+            var res = ((await addOrUpdateComment(this.obj)).data);
+            console.log(res);
+            if(res.code== '200'){
+                this.$message.success("帖子发布成功！")
+            }
+            else if(res.code=="312"){
+                this.$message.error("未登录")
+            }
+            else {
+                this.$message.error("帖子发布失败，请重新尝试")
+            }
+
+        },
+        clearanything(){
+            this.obj=null;
+            this.defaultData=null;
+            this.$ref.form.resetForm();
+        }
+    }
 }
 
 </script>

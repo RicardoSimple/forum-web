@@ -27,7 +27,25 @@ const routes = [
   {
     path: '/currentUser',
     name: 'currentUser',
-    component: () => import('../account/userhomepage1.vue')
+    component: () => import('../account/userhomepage1.vue'),
+    redirect:'/currentUser/myartical',
+    children:[
+      {
+        path:'/currentUser/myartical',
+        name:'artical',
+        component:()=> import('../account/userhomepage1_comment.vue'),
+      },
+      {
+        path:'/currentUser/myjob',
+        name:'job',
+        component:()=>import('../account/userhomepage1_job.vue')
+      },
+      {
+        path:'currentUser/myCreatedjob',
+        name:'createdjob',
+        component:()=>import('../account/userhomepage1_job.vue')
+      }
+    ]
 
   },
   {
