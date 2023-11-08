@@ -1,9 +1,9 @@
 <template>
-  <div class="comment">
+  <div class="comment" style="margin: 10px;">
     <el-card
       class="box-card"
       shadow="hover"
-      body-style="{ padding:'0px' }"
+      :body-style="{ height:'240px' }"
     >
       <div
         slot="header"
@@ -18,15 +18,16 @@
               class="detailBtn"
             >详情</el-button>
           </div>
+          <div class="salary"><span style="color: rgb(209, 42, 42);">{{ salary}}</span>K/月</div>
         </div>
-        <div class="time"><span>{{ salary}}</span>K/月</div>
       </div>
       <div class="content">
         <div class="title">{{ job.desc }}</div>
-        <div>
+        <div style="margin-top:10px;margin-bottom: 10px;">
           <el-tag
             v-for="tag in job.tags"
             :key="tag"
+            style="margin: 1px 0 0 5px;"
             class="tags"
           >
             {{tag}}
@@ -34,14 +35,16 @@
         </div>
       </div>
       <el-divider></el-divider>
-      <div class="footer">
+      <div class="footer" style="margin-bottom: 5px;">
         <div
           class="footer-left"
-          style="float: left;"
+          style="float: left;display: flex;"
         >
           <el-avatar
             :size="40"
-            :src="team.logo"
+            fit="fill"
+            :src="team.logo"  
+            style="position: relative;top: -10px;"
           ></el-avatar>
           <div>{{ team.name }}</div>
         </div>
@@ -49,7 +52,7 @@
           class="footer-right"
           style="float: right;padding-bottom: 10px;"
         >
-          <div>{{ team.industry }}</div>
+          <div style="color: rgb(165, 167, 167);">行业：<span style="color: rgb(9, 6, 6);">{{ team.industry }}</span></div>
         </div>
       </div>
     </el-card>
@@ -94,7 +97,8 @@ export default {
 <style scoped>
 .box-card {
   line-height: normal;
-  max-height: 400px;
+  width: 500px;
+  height: 280px;
 }
 .head {
   display: flex;
@@ -103,7 +107,8 @@ export default {
   line-height: 50px;
   text-align: center;
   flex-wrap: nowrap;
-  align-items: self-start;
+  justify-content: space-between;
+  align-items: baseline;
 }
 .info {
   height: 80px;
@@ -112,6 +117,9 @@ export default {
   justify-content: space-between;
 }
 .detailBtn {
+  position: relative;
+  top: -28px;
+  left: 40px;
 }
 .el-avatar {
   margin-right: 16px;
@@ -124,10 +132,12 @@ export default {
   margin-bottom: 10px;
 }
 
-.time {
-  color: #999;
-  font-size: 15px;
-  line-height: 20px;
+.salary {
+  color:rgb(73, 59, 59);
+  font-size: 40px;
+  line-height: 40px;
+  position: relative;
+  top: 5px;
   text-align: center;
 }
 .content {

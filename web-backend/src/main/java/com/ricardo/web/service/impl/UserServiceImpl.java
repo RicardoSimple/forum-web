@@ -113,7 +113,7 @@ public class UserServiceImpl implements UserService {
             return null;
         }
         if(user.getPwd().equals(pwd)){
-            return TokenInfo.getInfoByUser(user.toUser(),Const.TEAM_TYPE);
+            return TokenInfo.getInfoByUser(user.toUser(),Const.TEAM_TYPE,user.getTeamId());
         }
         return null;
     }

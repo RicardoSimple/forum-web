@@ -16,10 +16,22 @@ public class TokenInfo implements Serializable {
         tokenInfo.phone = user.getPhone();
         return tokenInfo;
     }
+
+    public static TokenInfo getInfoByUser(User user,String userType,String teamId){
+        TokenInfo tokenInfo = new TokenInfo();
+        tokenInfo.head = user.getAvatar();
+        tokenInfo.teamId = teamId;
+        tokenInfo.id = user.getId();
+        tokenInfo.userType = userType;
+        tokenInfo.nickName = user.getNickName();
+        tokenInfo.phone = user.getPhone();
+        return tokenInfo;
+    }
     private String userType;
 
     private String nickName;
     private long id;
     private String phone;
     private String head;
+    private String teamId;
 }
