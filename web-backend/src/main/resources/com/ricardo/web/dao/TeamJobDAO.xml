@@ -36,6 +36,7 @@
     <select id="findTeamJobsByTeamId" parameterType="long" resultMap="TeamJobResultMap">
         SELECT * FROM team_job
         WHERE team_id = #{teamId}
+        ORDER BY gmt_created desc
     </select>
 
     <delete id="deleteTeamJob" parameterType="long">
@@ -50,5 +51,6 @@
 
     <select id="findAllTeamJob" resultMap="TeamJobResultMap">
         SELECT * FROM team_job
+        ORDER BY gmt_created desc
     </select>
 </mapper>

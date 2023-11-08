@@ -29,6 +29,7 @@
 
     <select id="findAllComment" resultMap="CommentResultMap">
         SELECT * FROM comment_table
+        ORDER BY gmt_created desc
     </select>
 
     <delete id="deleteMessage" parameterType="long">
@@ -39,6 +40,7 @@
     <select id="findCommentByUserIdAndType" parameterType="com.ricardo.web.dto.CommentDO" resultMap="CommentResultMap">
         SELECT * FROM comment_table
         WHERE user_id = #{userID} AND user_type = #{userType}
+        ORDER BY gmt_created desc
     </select>
 
     <select id="findMessageByTeamId" parameterType="long" resultType="java.util.List">

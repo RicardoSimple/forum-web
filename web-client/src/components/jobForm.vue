@@ -1,5 +1,8 @@
 <template>
-  <div class="comment" style="margin: 10px;">
+  <div
+    class="comment"
+    style="margin: 10px;"
+  >
     <el-card
       class="box-card"
       shadow="hover"
@@ -19,14 +22,15 @@
               @click="jumpToDetail"
             >详情</el-button>
           </div>
-          <div class="salary"><span style="color: rgb(209, 42, 42);">{{ salary}}</span>K/月</div>
+          <div class="salary"><span
+              style="color: rgb(209, 42, 42);">{{ salary}}</span>K/月</div>
         </div>
       </div>
       <div class="content">
-        <div class="title">{{ job.desc }}</div>
+        <div class="title">{{ shorten(job.desc) }}</div>
         <div style="margin-top:10px;margin-bottom: 10px;">
           <el-tag
-            v-for="tag in job.tags.length>5?job.tags.slice(0,5):job.tags"
+            v-for="tag in cutTags(job.tags)"
             :key="tag"
             style="margin: 1px 0 0 5px;"
             class="tags"
@@ -36,7 +40,10 @@
         </div>
       </div>
       <el-divider></el-divider>
-      <div class="footer" style="margin-bottom: 5px;">
+      <div
+        class="footer"
+        style="margin-bottom: 5px;"
+      >
         <div
           class="footer-left"
           style="float: left;display: flex;"
@@ -44,7 +51,7 @@
           <el-avatar
             :size="40"
             fit="fill"
-            :src="team.logo"  
+            :src="team.logo"
             style="position: relative;top: -10px;"
           ></el-avatar>
           <div>{{ team.name }}</div>
@@ -53,7 +60,9 @@
           class="footer-right"
           style="float: right;padding-bottom: 10px;"
         >
-          <div style="color: rgb(165, 167, 167);">行业：<span style="color: rgb(9, 6, 6);">{{ team.industry }}</span></div>
+          <div style="color: rgb(165, 167, 167);">行业：<span
+              style="color: rgb(9, 6, 6);"
+            >{{ team.industry }}</span></div>
         </div>
       </div>
     </el-card>
@@ -62,6 +71,7 @@
 
 
 <script>
+import { shortStr, shortItem } from '@/util/stringUtil';
 import { getTeamById } from '../api/teamService'
 
 export default {
@@ -79,7 +89,7 @@ export default {
   },
   computed: {
     salary () {
-      return this.job.salaryRange[0]/1000 + "-" + this.job.salaryRange[1]/1000
+      return this.job.salaryRange[0] / 1000 + "-" + this.job.salaryRange[1] / 1000
     }
   },
   watch: {
@@ -92,9 +102,15 @@ export default {
       immediate: true
     }
   },
-  methods:{
-    jumpToDetail(){
-      window.location.href='/#/jobdetail/'+this.job.id;
+  methods: {
+    jumpToDetail () {
+      window.location.href = '/#/jobdetail/' + this.job.id;
+    },
+    shorten (str) {
+      return shortStr(str, 32)
+    },
+    cutTags(tags){
+      return shortItem(tags,5)
     }
   }
 };
@@ -139,7 +155,7 @@ export default {
 }
 
 .salary {
-  color:rgb(73, 59, 59);
+  color: rgb(73, 59, 59);
   font-size: 40px;
   line-height: 40px;
   position: relative;

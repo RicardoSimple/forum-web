@@ -42,7 +42,7 @@
       </div>
       <div>
         <el-button @click="submit">发布</el-button>
-        <el-button>清空</el-button>
+        <el-button @click="clearany">清空</el-button>
       </div>
     </el-card>
   </div>
@@ -222,8 +222,10 @@ export default {
       else {
         this.$message.error("帖子发布失败，请重新尝试")
       }
-
     },
+    clearany () {
+      this.$refs.form.resetForm();
+    }
 
   },
 

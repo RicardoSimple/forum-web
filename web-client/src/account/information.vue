@@ -33,9 +33,7 @@
           label="职位"
         ><el-input v-model="userData.role"></el-input></el-form-item>
       </el-form>
-      <div
-        v-if="this.currentUser!=null&&this.initData.phone==this.currentUser.phone&&(this.currentUser.teamId==this.initData.teamId||this.currentUser.education==this.initData.education)"
-      >
+      <div v-if="sameUser()">
         <el-button
           type="primary"
           icon="el-icon-edit"
@@ -99,6 +97,16 @@ export default {
     cancelEvent () {
       this.userData = { ...this.initData }
       this.formDisable = true;
+    },
+    sameUser () {
+      if (this.currentUser != null && this.currentUser.phone != null && this.currentUser.phone == this.userData.phone) {
+        if (this.userType == "talent_user") {
+          return this.currentUser.nickName == this.userData.nickName && this.currentUser.id == this.userData.id;
+        } else {
+          return this.currentUser.teamId != null && this.currentUser.teamId == this.userData.teamId;
+        }
+      }
+      return false;
     },
     editPwdEvent () {
 

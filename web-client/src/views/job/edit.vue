@@ -42,7 +42,6 @@
       </div>
       <div>
         <el-button @click="submit">发布</el-button>
-        <el-button>清空</el-button>
       </div>
     </el-card>
   </div>

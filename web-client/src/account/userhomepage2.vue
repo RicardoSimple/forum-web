@@ -49,7 +49,6 @@ export default {
     console.log(this.userType)
     console.log(this.userId)
     this.userData = (await getUserWithIdAndType(this.userId, this.userType)).data
-    this.currentUser = JSON.parse(sessionStorage.getItem("userData"))
 
     console.log(this.userData)
 
@@ -59,7 +58,6 @@ export default {
       userData: null,
       userId: null,
       userType: null,
-      currentUser: null,
     }
   },
   methods: {
