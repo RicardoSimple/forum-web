@@ -30,17 +30,18 @@
       <el-aside width="300px">
         <el-card
           v-if="userData!=null"
+          style="  height: 400px;"
           class="aside-card"
         >
           <div
             slot="header"
             class="clearfix"
           >
-            <span>操作卡片</span>
-            <el-button
+            <span>DashCard</span>
+            <!-- <el-button
               style="float: right; padding: 3px 0"
               type="text"
-            >操作按钮</el-button>
+            >操作按钮</el-button> -->
           </div>
           <div style="display: flex; flex-direction: column;flex: none;align-items: center;
           justify-content: center;">
@@ -53,7 +54,7 @@
             >我的帖子</el-button>
             <el-button
               type=""
-              icon="el-icon-user"
+              icon="el-icon-plus"
               class="btn"
               @click="jumpToNewComment"
               round
@@ -61,7 +62,7 @@
             <el-button
               type=""
               class="btn"
-              icon="el-icon-user"
+              icon="el-icon-setting"
               @click="jumpToJob"
               v-if="userData!=null&&userData.userType=='team_user'"
               round
@@ -69,7 +70,7 @@
             <el-button
               type=""
               class="btn"
-              icon="el-icon-user"
+              icon="el-icon-plus"
               @click="jumpToNewJob"
               v-if="userData!=null&&userData.userType=='team_user'"
               round
@@ -93,6 +94,14 @@
               type="text"
             >操作按钮</el-button>
           </div>
+          <div>
+            <div
+              v-for="team,index in teams"
+              :key="index"
+            >
+              <TeamCard :team="team"></TeamCard>
+            </div>
+          </div>
         </el-card>
       </el-aside>
     </el-container>
@@ -101,19 +110,26 @@
 </template>
 
 <script>
+import { getAllTeam } from '@/api/teamService'
+import TeamCard from '@/components/teamCard.vue'
+
 export default {
   // name: "home"
+  components: { TeamCard },
   data () {
     return {
       activeIndex: '1',
       activeIndex2: '1',
-      userData: null
+      userData: null,
+      teams: []
     }
   },
-  created () {
+  async created () {
     console.log("判断用户信息是否存在,控制展示用户信息还是展示头像")
     this.userData = JSON.parse(sessionStorage.getItem("userData"))
     console.log("当前用户信息:", this.userData)
+    var res = (await getAllTeam()).data
+    this.teams = res.data;
   },
   methods: {
     handleSelect (key, keyPath) {
@@ -149,7 +165,6 @@ export default {
 }
 
 .aside-card {
-  height: 400px;
   position: sticky;
 }
 .btn {
