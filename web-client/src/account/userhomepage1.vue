@@ -13,16 +13,19 @@
         <el-col :span="6"><div class="grid-content bg-purple">
           <span style="font-size: 20px;"> <router-link
             to="/currentUser/myartical"
+            style="text-decoration: none;"
           > 发布的帖子 </router-link> </span>
         </div></el-col>
         <el-col :span="6" v-if="this.userData.userType==='talent_user'"><div>
           <span style="font-size: 20px;"> <router-link
             to="/currentUser/myjob"
+            style="text-decoration: none;"
           > 投递的岗位 </router-link> </span>
         </div></el-col>
         <el-col :span="6" v-if="this.userData.userType==='team_user'"><div>
           <span style="font-size: 20px;"> <router-link
             to="/currentUser/myCreatedjob"
+            style="text-decoration: none;"
           > 发布招聘岗位 </router-link> </span>
         </div></el-col>
       </el-row>
@@ -64,7 +67,7 @@ export default{
     background: #99a9bf;
   } */
   .bg-purple {
-    background: #d3dce6;
+    /* background: #d3dce6; */
   }
   /* .bg-purple-light {
     background: #e5e9f2;
