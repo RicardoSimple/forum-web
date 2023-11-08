@@ -16,7 +16,7 @@ public interface TeamJobDAO {
 
     List<TeamJobDO> findTeamJobsByTeamId(long teamId);
 
-    void deleteTeamJob(long teamId);
+    void deleteTeamJob(long id);
 
     List<TeamJobDO> findTeamJobByName(String name);
 

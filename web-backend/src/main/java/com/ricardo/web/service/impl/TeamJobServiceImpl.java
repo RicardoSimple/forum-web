@@ -26,7 +26,9 @@ public class TeamJobServiceImpl implements TeamJobService {
         TeamJobDO teamJobDO = new TeamJobDO();
         teamJobDO.setTeamId(Long.parseLong(param.getTeamId()));
         teamJobDO.setJobName(param.getJobName());
-        teamJobDO.setTags(String.join("|", param.getTags()));
+        teamJobDO.setMinSalary(param.getSalaryRange()[0]);
+        teamJobDO.setMaxSalary(param.getSalaryRange()[1]);
+        teamJobDO.setTags(String.join("-", param.getTags()));
         teamJobDO.setJobType(param.getType());
         teamJobDO.setDescription(param.getDesc());
         teamJobDO.setContent(param.getContent());
@@ -64,6 +66,12 @@ public class TeamJobServiceImpl implements TeamJobService {
             return Result.fail(Code.FAIL_NO_DATA,"帖子id不存在");
         }
         return Result.success(teamJobDO.toTeamJob());
+    }
+
+    @Override
+    public Result deleteTeamJobById(String id) {
+        teamJobDAO.deleteTeamJob(Long.parseLong(id));
+        return Result.success(null);
     }
 
     @Override

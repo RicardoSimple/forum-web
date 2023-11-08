@@ -18,8 +18,8 @@
         <el-tag
           v-for="tag in defaultData.tags"
           closable
-          :disable-transitions="false"
           @close="handleClose(tag)"
+          :disable-transitions="false"
           :key="tag.name"
         >{{ tag}}</el-tag>
         <el-input
@@ -48,7 +48,7 @@
   </div>
 </template>
 <script>
-import { addOrUpdateTeamJob } from '@/api/teamJobService'
+import { addOrUpdateTeamJob, getTeamJobById } from '@/api/teamJobService'
 
 export default {
   name: "new_job",
@@ -56,7 +56,7 @@ export default {
     return {
       obj: {},
       defaultData: {
-        id: 124,
+        id: null,
         jobName: null,
         teamId: null,
         desc: null,
@@ -66,6 +66,8 @@ export default {
         ],
         count: 10,
         salaryRange: [],
+        minSalary: null,
+        maxSalary: null,
 
       },
       inputVisible: false,
@@ -75,8 +77,15 @@ export default {
   props: {
     closeDialob: [],
   },
-  created () {
+  async created () {
+    var id = this.$route.params.id
+    var res = (await getTeamJobById(id)).data
+    var sala = res.data.salaryRange;
+    this.defaultData = res.data
+    this.defaultData.minSalary = sala[0];
+    this.defaultData.maxSalary = sala[1];
     this.obj = this.defaultData;
+    console.log(this.obj)
   },
   computed: {
     option () {
@@ -112,7 +121,7 @@ export default {
           },
           {
             label: '具体要求',
-            prot: 'content',
+            prop: 'content',
             type: 'textarea',
             span: 23,
             placeholder: '示例:\n职位要求：\n1.熟悉至少一种编程语言，包括python、java等。\n2.熟悉Spring，Mybatis等常用开发框架。\n3.有实际前后端编程项目经验者优先。\n4.了解网络爬虫、ES、Spark等大数据组件者优先。\n5.实习期至少保证6个月。',
@@ -155,7 +164,7 @@ export default {
             prop: 'count',
             min: 1,
             max: 100,
-            readonly: true,
+            readonly: false,
             type: 'number',
             rules: [{
               required: true,
@@ -165,9 +174,7 @@ export default {
           {
             label: '最低薪资',
             controlsPosition: '',
-            prop: 'salaryRange[0]',
-            min: 0,
-            readonly: true,
+            prop: 'minSalary',
             type: 'number',
             rules: [{
               required: true,
@@ -176,9 +183,7 @@ export default {
           {
             label: '最高薪资',
             controlsPosition: '',
-            prop: 'salaryRange[1]',
-            min: 0,
-            readonly: true,
+            prop: 'maxSalary',
             type: 'number',
             rules: [{
               required: true,
@@ -208,25 +213,26 @@ export default {
       this.inputValue = '';
     },
     async submit () {
-
+      this.obj.salaryRange[0] = this.obj.minSalary
+      this.obj.salaryRange[1] = this.obj.maxSalary
+      this.defaultData.salaryRange[0] = this.obj.minSalary
+      this.defaultData.salaryRange[1] = this.obj.maxSalary
       console.log(this.obj);
-
       var res = ((await addOrUpdateTeamJob(this.obj)).data);
       console.log(res);
       if (res.code == '200') {
-        this.$message.success("岗位发布成功！")
+        this.$message.success("岗位修改成功！")
       }
       else if (res.code == "312") {
         this.$message.error("未登录")
       }
       else {
-        this.$message.error("帖子发布失败，请重新尝试")
+        this.$message.error("岗位修改失败，请重新尝试")
       }
 
     },
 
   },
-  //需要根据当前用户id获取teamid
 
 }
 </script>

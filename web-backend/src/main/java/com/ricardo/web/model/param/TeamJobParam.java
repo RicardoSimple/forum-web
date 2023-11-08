@@ -17,6 +17,7 @@ public class TeamJobParam {
 
     private String type; //全职 兼职 线上。。
 
+    private int[] salaryRange;
     private String[] tags;
 
     private int count;

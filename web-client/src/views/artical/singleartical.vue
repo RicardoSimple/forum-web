@@ -27,7 +27,7 @@
     </div>
     <div style="float: left; margin-top: 10px;">
       <el-button
-        v-if="this.userData.id==this.artical.userID"
+        v-if="this.userData!=null&&this.userData.id==this.artical.userID"
         type="primary"
         icon="el-icon-edit"
         circle
@@ -39,7 +39,7 @@
         circle
       ></el-button>
       <el-button
-        v-if="this.userData.id==this.artical.userID"
+        v-if="this.userData!=null&&this.userData.id==this.artical.userID"
         type="danger"
         icon="el-icon-delete"
         circle

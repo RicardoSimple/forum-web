@@ -56,26 +56,29 @@ export default {
     return {
       obj: {},
       defaultData: {
-        id: 124,
         jobName: null,
         teamId: null,
         desc: null,
         content: null,
         type: null,
-        tags: [
-        ],
+        tags: [],
         count: 10,
         salaryRange: [],
+        minSalary: null,
+        maxSalary: null,
 
       },
       inputVisible: false,
-      inputValue: ''
+      inputValue: '',
+      userData: null
     }
   },
   props: {
     closeDialob: [],
   },
   created () {
+    this.userData = JSON.parse(sessionStorage.getItem("userData"))
+    this.defaultData.teamId = this.userData.teamId;
     this.obj = this.defaultData;
   },
   computed: {
@@ -112,7 +115,7 @@ export default {
           },
           {
             label: '具体要求',
-            prot: 'content',
+            prop: 'content',
             type: 'textarea',
             span: 23,
             placeholder: '示例:\n职位要求：\n1.熟悉至少一种编程语言，包括python、java等。\n2.熟悉Spring，Mybatis等常用开发框架。\n3.有实际前后端编程项目经验者优先。\n4.了解网络爬虫、ES、Spark等大数据组件者优先。\n5.实习期至少保证6个月。',
@@ -154,8 +157,6 @@ export default {
             controlsPosition: '',
             prop: 'count',
             min: 1,
-            max: 100,
-            readonly: true,
             type: 'number',
             rules: [{
               required: true,
@@ -165,9 +166,7 @@ export default {
           {
             label: '最低薪资',
             controlsPosition: '',
-            prop: 'salaryRange[0]',
-            min: 0,
-            readonly: true,
+            prop: 'minSalary',
             type: 'number',
             rules: [{
               required: true,
@@ -176,9 +175,7 @@ export default {
           {
             label: '最高薪资',
             controlsPosition: '',
-            prop: 'salaryRange[1]',
-            min: 0,
-            readonly: true,
+            prop: 'maxSalary',
             type: 'number',
             rules: [{
               required: true,
@@ -208,8 +205,11 @@ export default {
       this.inputValue = '';
     },
     async submit () {
-
-      console.log(this.obj);
+      this.obj.salaryRange[0] = this.obj.minSalary
+      this.obj.salaryRange[1] = this.obj.maxSalary
+      this.obj.tags = this.defaultData.tags
+      this.defaultData.salaryRange[0] = this.obj.minSalary
+      this.defaultData.salaryRange[1] = this.obj.maxSalary
 
       var res = ((await addOrUpdateTeamJob(this.obj)).data);
       console.log(res);
@@ -226,7 +226,6 @@ export default {
     },
 
   },
-  //需要根据当前用户id获取teamid
 
 }
 </script>

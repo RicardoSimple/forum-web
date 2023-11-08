@@ -36,4 +36,9 @@ public class TeamJobApi {
         return teamJobService.getTeamJobById(Id);
     }
 
+    @DeleteMapping("/delete")
+    public Result deleteTeamJobById(@RequestParam("id")String id){
+        return teamJobService.deleteTeamJobById(id);
+    }
+
 }
