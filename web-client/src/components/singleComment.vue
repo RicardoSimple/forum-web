@@ -18,7 +18,7 @@
             :src="avatarUrl"
           ></el-avatar>
           <div class="info">
-            <div class="name">{{ comment.name }}</div>
+            <div class="name">{{ userInfo.nickName }}</div>
             <div class="time">{{ comment.gmtCreated }}</div>
           </div>
         </div>
@@ -74,6 +74,7 @@ export default {
     return {
       avatarUrl: "",
       userData: null,
+      userInfo: null,
     }
   },
   props: {
@@ -87,8 +88,10 @@ export default {
       return "/#/artical/" + this.comment.id
     }
   },
-  created () {
+  async created () {
     this.userData = JSON.parse(sessionStorage.getItem("userData"))
+    var res = (await getUserWithIdAndType(this.comment.userID, this.comment.userType)).data
+    this.userInfo = res.data
   },
   watch: {
     comment: {

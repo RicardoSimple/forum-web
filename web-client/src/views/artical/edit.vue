@@ -14,7 +14,6 @@
       ></avue-form>
       <div>
         <el-button @click="submit">发布</el-button>
-        <el-button @click="clearanything">清空</el-button>
       </div>
     </el-card>
   </div>
@@ -114,11 +113,6 @@ export default {
       }
 
     },
-    clearanything () {
-      this.obj = null;
-      this.defaultData = null;
-      this.$ref.form.resetForm();
-    }
   }
 }
 

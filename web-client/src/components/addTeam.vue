@@ -38,17 +38,10 @@
           ></el-input>
         </el-form-item>
         <el-form-item label="邀请码">
-          <el-tooltip
-            class="item"
-            effect="dark"
-            content="默认邀请码为888888"
-            placement="top"
-          >
-            <el-input
-              v-model="teamForm.code"
-              placeholder="若无邀请码请联系我们"
-            ></el-input>
-          </el-tooltip>
+          <el-input
+            v-model="teamForm.code"
+            placeholder="若无邀请码请联系我们"
+          ></el-input>
         </el-form-item>
         <el-form-item size="large">
           <el-button
@@ -56,6 +49,7 @@
             @click="onSubmit"
           >立即创建</el-button>
           <el-button @click="emptyEvent">清空表单</el-button>
+          <el-link href="/#/test/c" style="float: right;" icon="el-icon-info" :underline="false" type="warning">没有邀请码？去获取！</el-link>
         </el-form-item>
       </el-form>
     </el-card>

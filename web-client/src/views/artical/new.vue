@@ -92,11 +92,7 @@ export default {
     this.obj = this.defaultData
   },
   methods: {
-
     async submit () {
-
-      console.log(this.obj);
-
       var res = ((await addOrUpdateComment(this.obj)).data);
       console.log(res);
       if (res.code == '200') {
@@ -113,9 +109,7 @@ export default {
 
     },
     clearanything () {
-      this.obj = null;
-      this.defaultData = null;
-      this.$ref.form.resetForm();
+      this.$refs.form.resetForm();
     }
   }
 }
