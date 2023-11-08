@@ -26,6 +26,9 @@
           <el-menu-item v-if="userData!=null">
             <router-link to="/currentUser">个人中心</router-link>
           </el-menu-item>
+          <a href="https://github.com/RicardoSimple/forum-web">
+          <el-button type="" icon="el-icon-position" style="margin-top: 10px;" round>Github</el-button>
+        </a>
         </el-menu>
         <el-menu
           :default-active="activeIndex"

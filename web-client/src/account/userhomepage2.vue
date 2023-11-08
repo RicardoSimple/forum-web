@@ -1,15 +1,22 @@
 <template>
   <div>
+    <div class="information">
+      <div>
+        
+      </div>
+
+    </div>
     <el-row :gutter="20">
       <el-col :span="6"><div>
         <span style="font-size: 20px;"> <router-link
-          to="/user/:id/artical"
+          to=""
         >  帖子</router-link> </span>
       </div></el-col>
       <el-col :span="6"><div class="grid-content bg-purple">
         <span style="font-size: 20px;"> <router-link
-          to="/home/userhomepage2"
-        > 帖子 </router-link> </span>
+          to="pasTojob"
+          v-if="this.userType==='team_user'"
+        > 招聘岗位 </router-link> </span>
       </div></el-col>
     </el-row>
     <el-row :gutter="20">
@@ -18,7 +25,34 @@
   </div>
 </template>
 <script>
-
+import {getUserWithIdAndType} from '../api/loginService'
+export default{
+  compute:{
+    pasTojob(){
+      return "/#/user/"+this.userData.id+"/createdjob"+this.userData.id+"?userType="+this.userData.userType;
+    },
+    pasToartical(){
+      return this.$route;
+    }
+  },
+  async created(){
+    console.log(this.$route)
+    this.userId=this.$route.params.id
+    this.userType=this.$route.query.userType
+    console.log(this.userType)
+    console.log(this.userId)
+    this.userData=(await getUserWithIdAndType(this.userType,this.userId)).data
+    console.log(this.userData)
+   
+  },
+  data(){
+    return{
+      userData:null,
+      userId:null,
+      userType:null,
+    }
+  }
+}
 </script>
 <style>
  .el-row {
