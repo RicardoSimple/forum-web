@@ -17,7 +17,7 @@ public class TokenInfo implements Serializable {
         return tokenInfo;
     }
 
-    public static TokenInfo getInfoByUser(User user,String userType,String teamId){
+    public static TokenInfo getInfoByUser(User user,String userType,long teamId){
         TokenInfo tokenInfo = new TokenInfo();
         tokenInfo.head = user.getAvatar();
         tokenInfo.teamId = teamId;
@@ -33,5 +33,5 @@ public class TokenInfo implements Serializable {
     private long id;
     private String phone;
     private String head;
-    private String teamId;
+    private long teamId;
 }

@@ -48,7 +48,7 @@ public class TeamJobServiceImpl implements TeamJobService {
         if(id<0){
             return Result.fail(Code.FAIL_NO_ZERO,"id小于0");
         }
-        List<TeamJobDO> teamJobDOs = teamJobDAO.findTeamJobsByTeamId(teamId);
+        List<TeamJobDO> teamJobDOs = teamJobDAO.findTeamJobsByTeamId(id);
 
         List<TeamJob> results = new ArrayList<>();
         for (int i = 0; i < teamJobDOs.size(); i++) {

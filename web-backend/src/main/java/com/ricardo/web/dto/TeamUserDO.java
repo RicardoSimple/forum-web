@@ -4,6 +4,7 @@ import com.ricardo.web.model.TeamUser;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 public class TeamUserDO {
@@ -22,17 +23,19 @@ public class TeamUserDO {
 
     private String email;
 
-    private String teamId;
+    private long teamId;
 
     private String role;
 
-    private LocalDateTime gmtCreated;
+    private Date gmtCreated;
 
-    private LocalDateTime gmtModified;
+    private Date gmtModified;
 
     public TeamUser toUser() {
         TeamUser teamUser = new TeamUser();
-        teamUser.setTeamId(this.teamId);
+        teamUser.setTeamId(String.valueOf(this.teamId));
+        teamUser.setNickName(this.nickName);
+        teamUser.setId(this.id);
         teamUser.setRole(this.role);
         teamUser.setAvatar(this.avatar);
         teamUser.setName(this.name);

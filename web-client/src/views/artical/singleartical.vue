@@ -28,7 +28,6 @@ export default{
     data(){
         return {
             avaterUrl:"",
-            pasTouser:"",
         }
     },
     props: {
@@ -47,6 +46,9 @@ export default{
         //     //根据用户id返回用户名,未完成
         //     return this.artical.author_id;
         // }
+        pasTouser(){
+            return "/user/"+this.artical.userID+"?userType="+this.artical.userType;
+        }
     },
     watch:{
         artical:{

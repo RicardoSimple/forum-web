@@ -5,11 +5,13 @@
                 发布招聘信息
             </router-link>
         </div>
+        <div class="jobContainer">
         <div 
         v-for="job,index in jobs"
         :key='index'
         >
         <JobForm :job="job"></JobForm>
+        </div>
         </div>
     </div>
 </template>
@@ -22,7 +24,7 @@ export default{
 },
     async created(){
         var ras =JSON.parse(sessionStorage.getItem("userData"))
-        var res =(await getTeamJobByTeamId(ras.teamid)).data
+        var res =(await getTeamJobByTeamId(ras.teamId)).data
         this.jobs=res.data;
     },
     data(){

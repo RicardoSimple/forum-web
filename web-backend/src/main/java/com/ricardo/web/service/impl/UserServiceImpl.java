@@ -65,7 +65,7 @@ public class UserServiceImpl implements UserService {
         teamUserDO.setName(request.getName());
         teamUserDO.setPwd(request.getPwd());
         teamUserDO.setNickName(request.getNickName());
-        teamUserDO.setTeamId(request.getTeamId());
+        teamUserDO.setTeamId(Long.valueOf(request.getTeamId()));
         teamUserDO.setRole(request.getRole());
 
         teamUserDAO.insertTeamUser(teamUserDO);

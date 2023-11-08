@@ -28,12 +28,12 @@
         WHERE id = #{id}
     </update>
 
-    <select id="findTeamUserById" parameterType="long" resultType="com.ricardo.web.dto.TeamUserDO">
+    <select id="findTeamUserById" parameterType="long" resultMap="TeamUserResultMap">
         SELECT * FROM team_user
         WHERE id = #{id}
     </select>
 
-    <select id="findTeamUsersByTeamId" parameterType="String" resultType="com.ricardo.web.dto.TeamUserDO">
+    <select id="findTeamUsersByTeamId" parameterType="String" resultMap="TeamUserResultMap">
         SELECT * FROM team_user
         WHERE team_id = #{teamId}
     </select>
@@ -43,12 +43,12 @@
         WHERE id = #{id}
     </delete>
 
-    <select id="findTeamUserByPhone" parameterType="String" resultType="com.ricardo.web.dto.TeamUserDO">
+    <select id="findTeamUserByPhone" parameterType="String" resultMap="TeamUserResultMap">
         SELECT * FROM team_user
         WHERE phone = #{phone}
     </select>
 
-    <select id="findAllTeamUsers" resultType="java.util.List">
+    <select id="findAllTeamUsers" resultMap="TeamUserResultMap">
         SELECT * FROM team_user
         WHERE phone = #{phone}
     </select>
