@@ -109,10 +109,12 @@ export default {
       return false;
     },
     editPwdEvent () {
-
+        
     },
     forgetPwdEvent () {
-
+      this.$alert('请联系管理员!', '忘记密码', {
+        confirmButtonText: '确定',
+      });
     }
   },
   computed: {

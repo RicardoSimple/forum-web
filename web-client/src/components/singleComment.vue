@@ -40,14 +40,14 @@
           style="float: right;padding-bottom: 10px;"
         >
           <el-button
-            v-if="this.userData!=null&&this.userData.id==this.comment.userID"
+            v-if="this.userData!=null&&this.userData.id==this.comment.userID&&this.userData.userType==this.comment.userType"
             type="primary"
             icon="el-icon-edit"
             circle
             @click="toEditComment"
           ></el-button>
           <el-button
-            v-if="this.userData!=null&&this.userData.id==this.comment.userID"
+            v-if="this.userData!=null&&this.userData.id==this.comment.userID&&this.userData.userType==this.comment.userType"
             type="danger"
             icon="el-icon-delete"
             circle
