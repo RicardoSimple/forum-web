@@ -73,6 +73,20 @@
         <el-image :src="require('../../assets/zfb.jpg')"></el-image>
       </div>
     </el-card>
+    <el-card
+      style="margin-left: 25%;background-color: #FFFFFF;overflow:auto; width: 50%;margin-top: 10px;"
+    >
+      <div
+        slot="header"
+        style="text-align: left;"
+      >
+        <span>联系管理员:</span>
+      </div>
+      <div>
+        <el-image :src="require('../../assets/ad_vx.jpg')"></el-image>
+        <el-image :src="require('../../assets/ad_vx2.jpg')"></el-image>
+      </div>
+    </el-card>
     <br />
   </div>
 </template>

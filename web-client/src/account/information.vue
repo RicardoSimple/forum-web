@@ -109,7 +109,9 @@ export default {
       return false;
     },
     editPwdEvent () {
-        
+      this.$alert('请联系管理员!', '修改密码', {
+        confirmButtonText: '确定',
+      });
     },
     forgetPwdEvent () {
       this.$alert('请联系管理员!', '忘记密码', {

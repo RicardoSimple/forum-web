@@ -34,4 +34,5 @@ public class UserApi {
         }
         return userService.updateUserByUserType(params,userType);
     }
+
 }

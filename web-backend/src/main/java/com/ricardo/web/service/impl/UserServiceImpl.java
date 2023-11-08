@@ -12,6 +12,7 @@ import com.ricardo.web.model.param.UserRegisterRequest;
 import com.ricardo.web.service.UserService;
 import com.ricardo.web.util.Code;
 import com.ricardo.web.util.Const;
+import com.ricardo.web.util.PasswordUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -46,7 +47,10 @@ public class UserServiceImpl implements UserService {
             talentUserDO.setPhone(request.getPhone());
             talentUserDO.setEmail(request.getEmail());
             talentUserDO.setName(request.getName());
-            talentUserDO.setPwd(request.getPwd());
+            // 加密
+            String encrypt = PasswordUtil.encrypt(request.getPwd(), Const.PASSWORD, PasswordUtil.getStaticSalt());
+
+            talentUserDO.setPwd(encrypt);
             talentUserDO.setNickName(request.getNickName());
             talentUserDO.setStatus(request.getStatus());
 
@@ -63,7 +67,10 @@ public class UserServiceImpl implements UserService {
         teamUserDO.setEmail(request.getEmail());
         teamUserDO.setPhone(request.getPhone());
         teamUserDO.setName(request.getName());
-        teamUserDO.setPwd(request.getPwd());
+        // 加密
+        String encrypt = PasswordUtil.encrypt(request.getPwd(), Const.PASSWORD, PasswordUtil.getStaticSalt());
+
+        teamUserDO.setPwd(encrypt);
         teamUserDO.setNickName(request.getNickName());
         teamUserDO.setTeamId(Long.valueOf(request.getTeamId()));
         teamUserDO.setRole(request.getRole());
@@ -103,7 +110,10 @@ public class UserServiceImpl implements UserService {
             if (user==null){
                 return null;
             }
-            if(user.getPwd().equals(pwd)){
+            // 解密
+            String decrypt = PasswordUtil.decrypt(user.getPwd(), Const.PASSWORD, PasswordUtil.getStaticSalt());
+
+            if(decrypt.equals(pwd)){
                 return TokenInfo.getInfoByUser(user.toUser(),Const.TALENT_TYPE);
             }
             return null;
@@ -112,7 +122,10 @@ public class UserServiceImpl implements UserService {
         if(user==null){
             return null;
         }
-        if(user.getPwd().equals(pwd)){
+        // 解密
+        String decrypt = PasswordUtil.decrypt(user.getPwd(), Const.PASSWORD, PasswordUtil.getStaticSalt());
+
+        if(decrypt.equals(pwd)){
             return TokenInfo.getInfoByUser(user.toUser(),Const.TEAM_TYPE,user.getTeamId());
         }
         return null;
