@@ -96,7 +96,7 @@ export default {
         // children: [
         {
           path: "/test/c",
-          name: "本项目文档",
+          name: "关于本项目",
           children: null
         },
         {

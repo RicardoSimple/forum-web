@@ -4,15 +4,9 @@
             <span>
                 <router-link to="/test/d" style="text-decoration: none;color:black;">关于我们</router-link>
                 &nbsp;
-                <router-link to="/test/d" style="text-decoration: none;color:black;">加入我们</router-link>
-                &nbsp;
                 <router-link to="/test/d" style="text-decoration: none;color:black;">意见反馈 </router-link>
                 &nbsp;
-                <router-link to="/test/d" style="text-decoration: none;color:black;">联系我们</router-link>
-                &nbsp;
-                <router-link to="/test/d" style="text-decoration: none;color:black;">免责声明</router-link>
-                &nbsp;
-                <router-link to="/test/d" style="text-decoration: none;color:black;">友情链接</router-link>
+                <router-link to="/test/c" style="text-decoration: none;color:black;">免责声明</router-link>
                 &nbsp;
                 <router-link to="/test/c" style="text-decoration: none;color:black;">资源导航</router-link>
                 </span>
