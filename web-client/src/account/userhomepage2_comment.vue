@@ -1,9 +1,11 @@
 
 <template>
     <div>
+        1
         <div
         v-for="comment,index in comments"
         :key="index">
+        
         <SingleComment :comment="comment"></SingleComment>
         </div>
     </div>
@@ -17,11 +19,11 @@ export default{
     SingleComment,
 },
     async created(){
-        var ras =JSON.parse(sessionStorage.getItem("userData"))
-        var res = (await GetCommentByIdAndType(ras.userType,ras.id)).data
-        this.comments=res.data;
-        console.log("comment")
-        console.log(res)
+        var id = this.$route.params.id
+        var userType = this.$route.query.userType
+
+        console.log(id)
+        console.log(userType)
     },
     data(){
         return{
