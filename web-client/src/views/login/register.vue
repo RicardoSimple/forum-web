@@ -49,7 +49,6 @@
   </div>
 </template>
 <script>
-import router from '@/router'
 import { register } from '@/api/loginService'
 import { getAllTeam } from '@/api/teamService'
 export default {

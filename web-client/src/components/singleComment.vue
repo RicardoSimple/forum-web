@@ -1,5 +1,8 @@
 <template>
-  <div class="comment" style="margin-bottom: 10px;">
+  <div
+    class="comment"
+    style="margin-bottom: 10px;"
+  >
     <el-card
       class="box-card"
       shadow="hover"
@@ -37,14 +40,17 @@
           style="float: right;padding-bottom: 10px;"
         >
           <el-button
+            v-if="this.userData.id==this.comment.userID"
             type="primary"
             icon="el-icon-edit"
             circle
+            @click="toEditComment"
           ></el-button>
           <el-button
             type="success"
             icon="el-icon-view"
             circle
+            @click="toDetail"
           ></el-button>
         </div>
       </div>
@@ -59,6 +65,7 @@ export default {
   data () {
     return {
       avatarUrl: "",
+      userData: null,
     }
   },
   props: {
@@ -71,6 +78,9 @@ export default {
     pathToArtical () {
       return "/#/artical/" + this.comment.id
     }
+  },
+  created () {
+    this.userData = JSON.parse(sessionStorage.getItem("userData"))
   },
   watch: {
     comment: {
@@ -87,6 +97,14 @@ export default {
       immediate: true
     }
   },
+  methods: {
+    toDetail () {
+      window.location.href = this.pathToArtical;
+    },
+    toEditComment () {
+      window.location.href = '/#/editComment/' + this.comment.id;
+    }
+  }
 };
 </script>
 

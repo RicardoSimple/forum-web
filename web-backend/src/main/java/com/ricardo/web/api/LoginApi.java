@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import com.ricardo.web.model.Result;
 
 import javax.servlet.http.HttpServletRequest;
-import java.net.HttpCookie;
 
 @RestController
 @RequestMapping("/api/auth")

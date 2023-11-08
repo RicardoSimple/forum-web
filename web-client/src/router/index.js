@@ -25,25 +25,30 @@ const routes = [
     ]
   },
   {
+    path: '/editComment/:id',
+    name: 'editComment',
+    component: () => import('../views/artical/edit.vue')
+  },
+  {
     path: '/currentUser',
     name: 'currentUser',
     component: () => import('../account/userhomepage1.vue'),
-    redirect:'/currentUser/myartical',
-    children:[
+    redirect: '/currentUser/myartical',
+    children: [
       {
-        path:'/currentUser/myartical',
-        name:'mycomment',
-        component:()=> import('../account/userhomepage1_comment.vue'),
+        path: '/currentUser/myartical',
+        name: 'mycomment',
+        component: () => import('../account/userhomepage1_comment.vue'),
       },
       {
-        path:'/currentUser/myjob',
-        name:'job',
-        component:()=>import('../account/userhomepage1_job.vue')
+        path: '/currentUser/myjob',
+        name: 'job',
+        component: () => import('../account/userhomepage1_job.vue')
       },
       {
-        path:'/currentUser/myCreatedjob',
-        name:'createdjob',
-        component:()=>import('../account/userhomepage1_createdjob.vue')
+        path: '/currentUser/myCreatedjob',
+        name: 'createdjob',
+        component: () => import('../account/userhomepage1_createdjob.vue')
       }
     ]
 
@@ -94,23 +99,23 @@ const routes = [
     path: '/user/:id',
     name: 'user',
     component: () => import('../account/userhomepage2.vue'),
-    children:[
+    children: [
       {
-        path:'/',
-        redirect:'artical'
+        path: '/',
+        redirect: 'artical'
       },
       {
-        path:'artical',
-        name:'userartical',
-        component:()=>import('../account/userhomepage2_comment.vue')
+        path: 'artical',
+        name: 'userartical',
+        component: () => import('../account/userhomepage2_comment.vue')
       },
       {
-        path:'createdjob',
-        name:'userjob',
-        component:()=>import('../account/userhomepage2_createdjob.vue')
+        path: 'createdjob',
+        name: 'userjob',
+        component: () => import('../account/userhomepage2_createdjob.vue')
       }
     ]
-    
+
   },
   {
     path: '/creat/artical',
