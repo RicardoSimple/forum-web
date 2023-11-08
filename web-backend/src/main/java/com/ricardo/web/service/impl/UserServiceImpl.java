@@ -133,4 +133,14 @@ public class UserServiceImpl implements UserService {
         }
         return Result.success(teamUserById.toUser());
     }
+
+    @Override
+    public Result updateUserByUserType(UserRegisterRequest params, String userType) {
+        if(userType.equals(Const.TALENT_TYPE)){
+            talentUserDAO.updateTalentUser(params.toTalentUserDO());
+            return Result.success(null);
+        }
+        teamUserDAO.updateTeamUser(params.toTeamUserDO());
+        return Result.success(null);
+    }
 }

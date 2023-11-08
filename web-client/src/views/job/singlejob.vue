@@ -64,6 +64,7 @@
         type="danger"
         icon="el-icon-delete"
         circle
+        @click="deleteMethod"
       ></el-button>
       <el-button
         v-if="this.userData.userType=='team_user'&&this.userData.teamId==this.job.teamId"
@@ -81,6 +82,7 @@
 <script>
 import router from '@/router';
 import { getTeamById } from '@/api/teamService'
+import { deleteTeamJobById } from '@/api/teamJobService';
 export default {
   name: "singlejob",
   props: {
@@ -118,9 +120,24 @@ export default {
       }
     }
   },
-  methods:{
-    toJobEdit(){
-        window.location.href='/#/editJob/'+this.job.id;
+  methods: {
+    toJobEdit () {
+      window.location.href = '/#/editJob/' + this.job.id;
+    },
+    deleteMethod () {
+      this.$alert('删除不可恢复，请谨慎操作', '确认删除？', {
+        confirmButtonText: '确定',
+        callback: action => {
+          deleteTeamJobById(this.job.id).then(res => {
+            console.log(res)
+            this.$message({
+              type: 'info',
+              message: `删除成功`
+            });
+            window.location.href = "/#/currentUser/myCreatedjob"
+          })
+        }
+      });
     }
   }
 

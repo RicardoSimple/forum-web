@@ -92,7 +92,8 @@
             <el-button
               style="float: right; padding: 3px 0"
               type="text"
-            >操作按钮</el-button>
+              @click="addEvent"
+            >去添加</el-button>
           </div>
           <div>
             <div
@@ -146,6 +147,9 @@ export default {
     },
     jumpToNewJob () {
       window.location.href = "/#/creat/job"
+    },
+    addEvent () {
+      window.location.href = "/#/addTeam"
     }
   }
 }

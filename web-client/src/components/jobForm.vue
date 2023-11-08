@@ -26,7 +26,7 @@
         <div class="title">{{ job.desc }}</div>
         <div style="margin-top:10px;margin-bottom: 10px;">
           <el-tag
-            v-for="tag in job.tags"
+            v-for="tag in job.tags.length>5?job.tags.slice(0,5):job.tags"
             :key="tag"
             style="margin: 1px 0 0 5px;"
             class="tags"

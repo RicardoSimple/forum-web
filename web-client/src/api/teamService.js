@@ -13,6 +13,15 @@ export async function getTeamById (id) {
  * 获取所有企业
  * @returns 
  */
-export async function getAllTeam(){
+export async function getAllTeam () {
   return await service.get('/team/all')
+}
+
+/**
+ * 
+ * @param {name:string,alias:string,industry:string,logo:string,link:string,code:string} param 
+ * @returns 
+ */
+export async function addTeam (param) {
+  return await service.post('/team/add', param)
 }

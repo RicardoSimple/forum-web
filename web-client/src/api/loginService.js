@@ -51,3 +51,13 @@ export async function logout () {
 export async function getCurrentUser () {
   return await service.get('/auth/user')
 }
+
+/**
+ * 
+ * @param {id:string,userType:string, name:string,nickname:string,phone:string,avatar:string,email:string,pwd:string,status:string,education:string,teamId:string,role:string} params 
+ * @param {string} userType 
+ * @returns 
+ */
+export async function updateUserByUserType (params, userType) {
+  return await service.post('/user/update?type=' + userType, params)
+}

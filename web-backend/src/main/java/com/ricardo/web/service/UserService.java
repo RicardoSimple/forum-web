@@ -12,4 +12,6 @@ public interface UserService {
     Object login(String userType, String phone, String pwd);
 
     Result getUserByIdAndType(String userType, Long id);
+
+    Result updateUserByUserType(UserRegisterRequest params, String userType);
 }

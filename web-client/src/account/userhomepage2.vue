@@ -1,82 +1,82 @@
 <template>
   <div>
-    <div class="information">
-      <div>
-        
-      </div>
-
+    <div>
+      <Information
+        :id="this.userId"
+        :userType="this.userType"
+      ></Information>
     </div>
+
     <el-row :gutter="20">
-      <el-col :span="6"><div>
-        <span style="font-size: 20px;"> <router-link
-          to="pasToartical"
-        >  帖子</router-link> </span>
-      </div></el-col>
-      <el-col :span="6"><div class="grid-content bg-purple">
-        <span style="font-size: 20px;"> <router-link
-          to="pasTojob"
+      <el-col :span="6">
+        <div>
+          <el-button @click="jumpToArtical">TA的帖子</el-button>
+        </div>
+      </el-col>
+      <el-col :span="6">
+        <div
           v-if="this.userType==='team_user'"
-        > 招聘岗位 </router-link> </span>
-      </div></el-col>
+          class="grid-content bg-purple"
+        >
+          <el-button @click="jumpToJob">TA们的岗位</el-button>
+        </div>
+      </el-col>
     </el-row>
     <el-row :gutter="20">
-    <el-col :span="24"><div class="grid-content bg-purple"></div></el-col>
+      <el-col :span="24">
+        <div class="grid-content bg-purple"></div>
+      </el-col>
+    </el-row>
+
+    <el-row :gutter="20">
+      <el-col :span="24">
+        <div class="grid-content bg-purple">
+          <router-view></router-view>
+        </div>
+      </el-col>
     </el-row>
   </div>
 </template>
 <script>
-import {getUserWithIdAndType} from '../api/loginService'
-export default{
-  compute:{
-    pasTojob(){
-      return "/#/user/"+this.userData.id+"/createdjob"+this.userData.id+"?userType="+this.userData.userType;
-    },
-    pasToartical(){
-      return "/#/user/"+this.userData.id+"?userType="+this.userData.userType;
-    }
-  },
-  async created(){
+import { getUserWithIdAndType } from '../api/loginService'
+import Information from './information.vue';
+export default {
+  components: { Information },
+  async created () {
     console.log(this.$route)
-    this.userId=this.$route.params.id
-    this.userType=this.$route.query.userType
+    this.userId = this.$route.params.id
+    this.userType = this.$route.query.userType
     console.log(this.userType)
     console.log(this.userId)
-    this.userData=(await getUserWithIdAndType(this.userId,this.userType)).data
+    this.userData = (await getUserWithIdAndType(this.userId, this.userType)).data
+    this.currentUser = JSON.parse(sessionStorage.getItem("userData"))
+
     console.log(this.userData)
-   
+
   },
-  data(){
-    return{
-      userData:null,
-      userId:null,
-      userType:null,
+  data () {
+    return {
+      userData: null,
+      userId: null,
+      userType: null,
+      currentUser: null,
+    }
+  },
+  methods: {
+    jumpToArtical () {
+      window.location.href = `/#/user/${this.userId}/artical?userType=${this.userType}`
+    },
+    jumpToJob () {
+      window.location.href = `/#/user/${this.userId}/createdjob?userType=${this.userType}`
     }
   }
 }
 </script>
 <style>
- .el-row {
+.el-row {
   margin-bottom: 20px;
-  
-} 
+}
 .el-col {
   border-radius: 4px;
-}
-/* .bg-purple-dark {
-  background: #99a9bf;
-} */
-.bg-purple {
-  background: #d3dce6;
-}
-/* .bg-purple-light {
-  background: #e5e9f2;
-} */
-/* .grid-content {
-  border-radius: 4px;
-  min-height: 36px;
-} */
-.row-bg {
-  padding: 10px 0;
-  background-color: #f9fafc;
 }
 </style>

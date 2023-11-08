@@ -24,7 +24,7 @@
     <update id="updateTeamUser" parameterType="com.ricardo.web.dto.TeamUserDO">
         UPDATE team_user
         SET name = #{name}, phone = #{phone}, nickname = #{nickName}, avatar = #{avatar}, email = #{email},
-            team_id = #{teamId}, role = #{role},gmt_modified = now()
+            role = #{role},gmt_modified = now()
         WHERE id = #{id}
     </update>
 

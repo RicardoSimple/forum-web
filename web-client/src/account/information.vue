@@ -1,50 +1,116 @@
 <template>
-    <div>
-        <el-card
-        class="box-card"    
-        shadow="hover"
-        body-style="{ padding:'0px' }"  
-        >
-        <el-form ref="form" :model="form" label-width="80px">
-            <div>
-            <el-avatar
-            :size="50"
+  <div style="padding: 10px; margin-bottom: 10px;">
+    <el-card
+      class="box-card"
+      shadow="hover"
+      body-style="{ padding:'0px' }"
+    >
+      <el-form
+        ref="form"
+        :disabled="formDisable"
+        label-width="80px"
+      >
+        <div>
+          <el-avatar
+            :size="100"
             :src="userData.avatar"
-            ></el-avatar>
-            </div>
-            <el-form-item label="头像链接"><el-input v-model="userData.avatar"></el-input></el-form-item>
-            <el-form-item label="名字"><el-input v-model="userData.name"></el-input></el-form-item>
-            <el-form-item label="手机号"><el-input v-model="userData.phone"></el-input></el-form-item>
-            <el-form-item label="昵称"><el-imput v-model="userData.nickNamme"></el-imput></el-form-item>
-            <el-form-item label="邮箱"><el-input v-model="userData.email"></el-input></el-form-item>
-        </el-form>
-        <el-button type="primary" @click="onSubmit">修改</el-button>
-        <el-button>取消</el-button>
-        </el-card>
-    </div>
+            shape="square"
+            style="margin-bottom: 5px;"
+          ></el-avatar>
+        </div>
+        <el-form-item label="头像链接"><el-input
+            v-model="userData.avatar"></el-input></el-form-item>
+        <el-form-item label="名字"><el-input
+            v-model="userData.name"></el-input></el-form-item>
+        <el-form-item label="手机号"><el-input
+            v-model="userData.phone"></el-input></el-form-item>
+        <el-form-item label="昵称"><el-input
+            v-model="userData.nickName"></el-input></el-form-item>
+        <el-form-item label="邮箱"><el-input
+            v-model="userData.email"></el-input></el-form-item>
+        <el-form-item
+          v-if="userData.role!=null"
+          label="职位"
+        ><el-input v-model="userData.role"></el-input></el-form-item>
+      </el-form>
+      <div
+        v-if="this.currentUser!=null&&this.initData.phone==this.currentUser.phone&&(this.currentUser.teamId==this.initData.teamId||this.currentUser.education==this.initData.education)"
+      >
+        <el-button
+          type="primary"
+          icon="el-icon-edit"
+          @click="editEvent"
+        >编辑</el-button>
+        <el-button
+          type="primary"
+          :disabled="formDisable"
+          @click="onSubmit"
+        >修改</el-button>
+        <el-button @click="cancelEvent">取消</el-button>
+        <el-button
+          type="danger"
+          @click="editPwdEvent"
+        >修改密码</el-button>
+        <el-button
+          type="danger"
+          @click="forgetPwdEvent"
+        >忘记密码</el-button>
+      </div>
+    </el-card>
+  </div>
 </template>
 <script>
-import { getUserWithIdAndType } from '@/api/loginService'
-export default{
-    name:'Information',
-    async created(){
-        var id=this.$route.params.id
-        var userType=this.$route.query.userType
-        var res=(await getUserWithIdAndType(id,userType)).data
-        console.log(res)
-        this.userData=res.data
-    },
-    data(){
-        return{
-            userData:null,
-        }
-    },
-    props:{},
-    methods: {
-      onSubmit() {
-        console.log('submit!');
+import { getUserWithIdAndType, updateUserByUserType } from '@/api/loginService'
+export default {
+  name: 'Information',
+  async created () {
+    var res = (await getUserWithIdAndType(this.id, this.userType)).data
+    console.log(res)
+    this.userData = res.data
+    this.initData = { ...res.data }
+    this.currentUser = JSON.parse(sessionStorage.getItem("userData"))
+  },
+  data () {
+    return {
+      userData: null,
+      formDisable: true,
+      initData: {},
+      currentUser: null
+    }
+  },
+  props: { id: { type: String }, userType: { type: String } },
+  methods: {
+    async onSubmit () {
+      console.log('submit!');
+      console.log(this.userData)
+      var res = (await updateUserByUserType(this.userData, this.userType)).data
+      if (res.code == '200') {
+        this.$notify({
+          title: '提示',
+          message: '用户信息修改成功！'
+        })
+        location.reload()
 
       }
+    },
+    editEvent () {
+      this.formDisable = false;
+    },
+    cancelEvent () {
+      this.userData = { ...this.initData }
+      this.formDisable = true;
+    },
+    editPwdEvent () {
+
+    },
+    forgetPwdEvent () {
+
     }
+  },
+  computed: {
+    toSubmit () {
+      return this.userData == this.initData
+    }
+  }
 }
 </script>

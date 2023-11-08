@@ -33,3 +33,12 @@ export async function getTeamJobById (id) {
 export async function getAllTeamJob () {
   return await service.get('/teamjob/all')
 }
+
+/**
+ * 删除岗位
+ * @param {string} id 
+ * @returns 
+ */
+export async function deleteTeamJobById (id) {
+  return await service.delete('/teamjob/delete?id=' + id)
+}

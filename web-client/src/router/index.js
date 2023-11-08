@@ -95,6 +95,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/login/register.vue')
   },
   {
+    path: '/addteam',
+    name: 'addTeam',
+    component: () => import('../components/addTeam.vue')
+  },
+  {
     path: '/artical/:id',
     name: 'artical',
     // component: HomeView

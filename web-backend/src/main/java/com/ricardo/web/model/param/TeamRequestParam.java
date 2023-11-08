@@ -13,4 +13,5 @@ public class TeamRequestParam {
     private String logo;
 
     private String link;
+    private String code;
 }
