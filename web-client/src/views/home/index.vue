@@ -27,7 +27,7 @@
           <router-view></router-view>
         </el-main>
       </el-container>
-      <el-aside width="400px">
+      <el-aside width="300px">
         <el-card v-if="userData!=null" class="aside-card">
           <div
             slot="header"
