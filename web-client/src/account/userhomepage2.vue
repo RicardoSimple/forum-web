@@ -9,7 +9,7 @@
     <el-row :gutter="20">
       <el-col :span="6"><div>
         <span style="font-size: 20px;"> <router-link
-          to=""
+          to="pasToartical"
         >  帖子</router-link> </span>
       </div></el-col>
       <el-col :span="6"><div class="grid-content bg-purple">
@@ -32,7 +32,7 @@ export default{
       return "/#/user/"+this.userData.id+"/createdjob"+this.userData.id+"?userType="+this.userData.userType;
     },
     pasToartical(){
-      return this.$route;
+      return "/#/user/"+this.userData.id+"?userType="+this.userData.userType;
     }
   },
   async created(){

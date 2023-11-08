@@ -1,7 +1,6 @@
 
 <template>
     <div>
-        1
         <div
         v-for="comment,index in comments"
         :key="index">
@@ -21,9 +20,11 @@ export default{
     async created(){
         var id = this.$route.params.id
         var userType = this.$route.query.userType
-
+        var res= (await GetCommentByIdAndType(userType,id)).data
+        console.log(res)
         console.log(id)
         console.log(userType)
+        this.comments=res.data
     },
     data(){
         return{
