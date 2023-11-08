@@ -78,4 +78,10 @@ public class CommentServiceImpl implements CommentService {
         }
         return Result.success(results);
     }
+
+    @Override
+    public Result deleteCommentById(String id) {
+        commentDAO.deleteMessage(Long.parseLong(id));
+        return Result.success(null);
+    }
 }

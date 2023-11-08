@@ -1,13 +1,5 @@
 <template>
   <div>
-    <div style="text-align: right;">
-      <router-link
-        to="/creat/job"
-        style="text-decoration: none;"
-      >
-        发布招聘信息
-      </router-link>
-    </div>
     <div class="jobContainer">
       <div
         v-for="job,index in jobs"

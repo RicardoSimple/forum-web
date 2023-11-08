@@ -1,38 +1,36 @@
 
 
 <template>
+  <div>
     <div>
-        <div style="text-align: right;">
-            <router-link to="/creat/artical" style="text-decoration: none;">
-                发帖
-            </router-link>
-        </div>
-        <div
+      <div
         v-for="comment,index in comments"
-        :key="index">
+        :key="index"
+      >
         <SingleComment :comment="comment"></SingleComment>
-        </div>
+      </div>
     </div>
+  </div>
 </template>
 <script>
 import SingleComment from '@/components/singleComment.vue';
 import { GetCommentByIdAndType } from '@/api/commentService';
 import router from '@/router';
-export default{
-    components:{
+export default {
+  components: {
     SingleComment,
-},
-    async created(){
-        var ras =JSON.parse(sessionStorage.getItem("userData"))
-        var res = (await GetCommentByIdAndType(ras.userType,ras.id)).data
-        this.comments=res.data;
-        console.log("comment")
-        console.log(res)
-    },
-    data(){
-        return{
-            comments:[],
-        }
+  },
+  async created () {
+    var ras = JSON.parse(sessionStorage.getItem("userData"))
+    var res = (await GetCommentByIdAndType(ras.userType, ras.id)).data
+    this.comments = res.data;
+    console.log("comment")
+    console.log(res)
+  },
+  data () {
+    return {
+      comments: [],
     }
+  }
 }
 </script>

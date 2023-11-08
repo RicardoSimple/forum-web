@@ -1,7 +1,7 @@
 <template>
   <div
     class="comment"
-    style="margin-bottom: 10px;"
+    style="margin-bottom: 10px;margin-top: 10px;"
   >
     <el-card
       class="box-card"
@@ -47,6 +47,13 @@
             @click="toEditComment"
           ></el-button>
           <el-button
+            v-if="this.userData.id==this.comment.userID"
+            type="danger"
+            icon="el-icon-delete"
+            circle
+            @click="deleteMethod"
+          ></el-button>
+          <el-button
             type="success"
             icon="el-icon-view"
             circle
@@ -60,6 +67,7 @@
 
 <script>
 import { getUserWithIdAndType } from '@/api/loginService';
+import { deleteCommentById } from '@/api/commentService';
 export default {
   name: 'SingleComment',
   data () {
@@ -103,6 +111,21 @@ export default {
     },
     toEditComment () {
       window.location.href = '/#/editComment/' + this.comment.id;
+    },
+    deleteMethod () {
+      this.$alert('删除不可恢复，请谨慎操作', '确认删除？', {
+        confirmButtonText: '确定',
+        callback: action => {
+          deleteCommentById(this.comment.id).then(res => {
+            console.log(res)
+            this.$message({
+              type: 'info',
+              message: `删除成功`
+            });
+            location.reload();
+          })
+        }
+      });
     }
   }
 };

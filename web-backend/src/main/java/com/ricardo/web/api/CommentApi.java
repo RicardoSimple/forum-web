@@ -33,4 +33,9 @@ public class CommentApi {
     public Result getAllComment(){
         return commentService.GetAllComment();
     }
+
+    @DeleteMapping("/delete")
+    public Result deleteCommentById(@RequestParam("id")String id){
+        return commentService.deleteCommentById(id);
+    }
 }

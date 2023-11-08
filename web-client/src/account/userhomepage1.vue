@@ -11,22 +11,35 @@
       </div>
       <el-row :gutter="20">
         <el-col :span="6"><div class="grid-content bg-purple">
-          <span style="font-size: 20px;"> <router-link
+          <span style="font-size: 20px; border: 1px gray solid;padding: 5px 11px;border-radius: 8px;"> <router-link
             to="/currentUser/myartical"
-            style="text-decoration: none;"
+            style="text-decoration: none; color: gray;"
           > 帖子 </router-link> </span>
         </div></el-col>
+        <el-col :span="6"><div class="grid-content bg-purple">
+          <span style="font-size: 20px; border: 1px gray solid;padding: 5px 11px;border-radius: 8px;"> <router-link
+            to="/creat/artical"
+            style="text-decoration: none; color: gray;"
+          > 去发帖 </router-link> </span>
+        </div></el-col>
+        
         <el-col :span="6" v-if="this.userData.userType==='talent_user'"><div>
-          <span style="font-size: 20px;"> <router-link
+          <span style="font-size: 20px;border: 1px gray solid;padding: 5px 11px;border-radius: 8px;"> <router-link
             to="/currentUser/myjob"
-            style="text-decoration: none;"
+            style="text-decoration: none;color: gray;"
           > 已投岗位 </router-link> </span>
         </div></el-col>
         <el-col :span="6" v-if="this.userData.userType==='team_user'"><div>
-          <span style="font-size: 20px;"> <router-link
+          <span style="font-size: 20px;border: 1px gray solid;padding: 5px 11px;border-radius: 8px;"> <router-link
             to="/currentUser/myCreatedjob"
-            style="text-decoration: none;"
+            style="text-decoration: none;color: gray;"
           > 在招岗位 </router-link> </span>
+        </div></el-col>
+        <el-col :span="6" v-if="this.userData.userType==='team_user'"><div>
+          <span style="font-size: 20px;border: 1px gray solid;padding: 5px 11px;border-radius: 8px;"> <router-link
+            to="/creat/job"
+            style="text-decoration: none;color: gray;"
+          > 发布岗位 </router-link> </span>
         </div></el-col>
       </el-row>
       <el-row :gutter="20">
