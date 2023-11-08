@@ -41,9 +41,9 @@ const routes = [
         component:()=>import('../account/userhomepage1_job.vue')
       },
       {
-        path:'currentUser/myCreatedjob',
+        path:'/currentUser/myCreatedjob',
         name:'createdjob',
-        component:()=>import('../account/userhomepage1_job.vue')
+        component:()=>import('../account/userhomepage1_createdjob.vue')
       }
     ]
 

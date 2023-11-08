@@ -22,7 +22,7 @@
         </div></el-col>
         <el-col :span="6" v-if="this.userData.userType==='team_user'"><div>
           <span style="font-size: 20px;"> <router-link
-            to="/currentUser/myjob"
+            to="/currentUser/myCreatedjob"
           > 发布招聘岗位 </router-link> </span>
         </div></el-col>
       </el-row>
