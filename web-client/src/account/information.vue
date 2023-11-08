@@ -99,11 +99,11 @@ export default {
       this.formDisable = true;
     },
     sameUser () {
-      if (this.currentUser != null && this.currentUser.phone != null && this.currentUser.phone == this.userData.phone) {
+      if (this.currentUser != null && this.currentUser.phone != null && this.currentUser.phone == this.initData.phone) {
         if (this.userType == "talent_user") {
-          return this.currentUser.nickName == this.userData.nickName && this.currentUser.id == this.userData.id;
+          return this.currentUser.nickName == this.initData.nickName && this.currentUser.id == this.initData.id;
         } else {
-          return this.currentUser.teamId != null && this.currentUser.teamId == this.userData.teamId;
+          return this.currentUser.teamId != null && this.currentUser.teamId == this.initData.teamId;
         }
       }
       return false;
