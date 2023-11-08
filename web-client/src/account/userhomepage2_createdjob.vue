@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div style="display: flex; justify-content: space-around;">
+    <div style="display: flex; justify-content: space-around;flex-wrap: wrap;">
       <div
         v-for="job,index in jobs"
         :key="index"
