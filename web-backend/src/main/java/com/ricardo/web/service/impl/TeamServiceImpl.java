@@ -41,7 +41,7 @@ public class TeamServiceImpl implements TeamService {
     }
 
     @Override
-    public Result getAllteam(String type) {
+    public Result getAllTeam() {
         List<TeamDO> allteam = teamDAO.findAllTeams();
         List<Team> results = new ArrayList<>();
         for (int i = 0; i < allteam.size(); i++) {

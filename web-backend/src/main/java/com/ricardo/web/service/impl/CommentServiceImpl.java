@@ -27,10 +27,11 @@ public class CommentServiceImpl implements CommentService {
         CommentDO commentDO = new CommentDO();
         commentDO.setName(param.getName());
         commentDO.setContent(param.getContent());
+        commentDO.setUserID(Long.parseLong(param.getUserID()));
         commentDO.setTitle(param.getTitle());
         commentDO.setUserType(param.getUserType());
 
-        if (param.getId().isBlank()) {
+        if (param.getId()==null||param.getId().isBlank()) {
             commentDAO.insertMessage(commentDO);
         }else {
             commentDO.setId(Long.parseLong(param.getId()));

@@ -19,8 +19,8 @@ public class TeamApi {
     }
 
     @GetMapping("/all")
-    public Result getAllteam(@RequestParam("type")String type){
-        return teamService.getAllteam(type);
+    public Result getAllTeam(){
+        return teamService.getAllTeam();
     }
 
     @GetMapping("/get")

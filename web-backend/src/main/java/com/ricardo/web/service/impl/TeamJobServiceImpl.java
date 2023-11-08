@@ -32,7 +32,7 @@ public class TeamJobServiceImpl implements TeamJobService {
         teamJobDO.setContent(param.getContent());
         teamJobDO.setCountNum(param.getCount());
 
-        if (param.getId().isBlank()) {
+        if (param.getId()==null||param.getId().isBlank()) {
             teamJobDAO.insertTeamJob(teamJobDO);
         }else {
             teamJobDO.setId(Long.parseLong(param.getId()));

@@ -8,3 +8,11 @@ import service from '../http/index.js'
 export async function getTeamById (id) {
   return await service.get('/team/get?id=' + id)
 }
+
+/**
+ * 获取所有企业
+ * @returns 
+ */
+export async function getAllTeam(){
+  return await service.get('/team/all')
+}

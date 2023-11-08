@@ -7,7 +7,7 @@ public interface TeamService {
 
     Result addTeam(TeamRequestParam param);
 
-    Result getAllteam(String type);
+    Result getAllTeam();
 
     Result getTeamById(String id);
 }

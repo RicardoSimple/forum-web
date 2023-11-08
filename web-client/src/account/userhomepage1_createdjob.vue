@@ -1,36 +1,51 @@
 <template>
-    <div>
-        <div style="text-align: right;">
-        <router-link to="/creat/artical" style="text-decoration: none;">
-                发布招聘信息
-            </router-link>
-        </div>
-        <div class="jobContainer">
-        <div 
+  <div>
+    <div style="text-align: right;">
+      <router-link
+        to="/creat/job"
+        style="text-decoration: none;"
+      >
+        发布招聘信息
+      </router-link>
+    </div>
+    <div class="jobContainer">
+      <div
         v-for="job,index in jobs"
         :key='index'
-        >
+      >
         <JobForm :job="job"></JobForm>
-        </div>
-        </div>
+      </div>
     </div>
+  </div>
 </template>
 <script>
-import {getTeamJobByTeamId} from '../api/teamJobService';
+import { getTeamJobByTeamId } from '../api/teamJobService';
 import JobForm from '@/components/jobForm.vue';
-export default{
-    components:{
+export default {
+  components: {
     JobForm,
-},
-    async created(){
-        var ras =JSON.parse(sessionStorage.getItem("userData"))
-        var res =(await getTeamJobByTeamId(ras.teamId)).data
-        this.jobs=res.data;
-    },
-    data(){
-        return{
-            jobs:[],
-        }
+  },
+  async created () {
+    var ras = JSON.parse(sessionStorage.getItem("userData"))
+    var res = (await getTeamJobByTeamId(ras.teamId)).data
+    this.jobs = res.data;
+  },
+  data () {
+    return {
+      jobs: [],
     }
+  }
 }
 </script>
+
+<style>
+.jobContainer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 10px;
+  width: 1100px;
+  height: auto;
+}
+</style>

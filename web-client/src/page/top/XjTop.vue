@@ -16,7 +16,7 @@
     </el-col>
 
     <!-- 功能集 -->
-    <el-col :span="17">
+    <el-col :span="15">
       <div class="grid-content bg-purple-light">
         <el-menu
           class="el-menu-demo"
@@ -44,7 +44,7 @@
     </el-col>
 
     <!-- 登录/登出/用户信息 -->
-    <el-col :span="3">
+    <el-col :span="5">
       <div
         class="grid-content bg-purple-light"
         style="height: 60px;line-height:60px; text-align:right;margin-right: 12%"
