@@ -19,7 +19,7 @@
             >详情</el-button>
           </div>
         </div>
-        <div class="time">{{ job.salary }}</div>
+        <div class="time"><span>{{ salary}}</span>K/月</div>
       </div>
       <div class="content">
         <div class="title">{{ job.desc }}</div>
@@ -41,15 +41,15 @@
         >
           <el-avatar
             :size="40"
-            :src="url"
+            :src="team.logo"
           ></el-avatar>
-          <div>{{ job.team.name }}</div>
+          <div>{{ team.name }}</div>
         </div>
         <div
           class="footer-right"
           style="float: right;padding-bottom: 10px;"
         >
-          <div>{{ job.team.industry }}</div>
+          <div>{{ team.industry }}</div>
         </div>
       </div>
     </el-card>
@@ -74,16 +74,16 @@ export default {
     },
   },
   computed: {
-    url () {
-      // 计算头像 URL 的逻辑，可以从 comment 中获取
-      return this.job.avatarUrl;
-    },
+    salary () {
+      return this.job.salaryRange[0]/1000 + "-" + this.job.salaryRange[1]/1000
+    }
   },
   watch: {
     job: {
       handler: async function (oldName, newName) {
         var res = (await getTeamById(this.job.teamId)).data;
         console.log(res)
+        this.team = res.data;
       },
       immediate: true
     }
@@ -98,18 +98,20 @@ export default {
 }
 .head {
   display: flex;
-  height: 80px;
+  height: 50px;
   width: 90%;
+  line-height: 50px;
+  text-align: center;
   flex-wrap: nowrap;
   align-items: self-start;
 }
 .info {
   height: 80px;
+  display: flex;
   padding-top: 25px;
+  justify-content: space-between;
 }
 .detailBtn {
-  position: relative;
-  top: -30px;
 }
 .el-avatar {
   margin-right: 16px;

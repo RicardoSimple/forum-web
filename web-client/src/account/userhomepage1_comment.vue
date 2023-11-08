@@ -1,32 +1,31 @@
 
-import SingleComment from '@/components/singleComment.vue';
 
 <template>
     <div>
         <div
-        v-for="comment,index in b"
+        v-for="comment,index in comments"
         :key="index">
-        <singleComment :comment="comment"></singleComment>
+        <SingleComment :comment="comment"></SingleComment>
         </div>
     </div>
 </template>
 <script>
-import singleComment from '@/components/singleComment.vue';
-import { getCommentByIdAndType } from '@/api/commentService';
+import SingleComment from '@/components/singleComment.vue';
+import { GetCommentByIdAndType } from '@/api/commentService';
 export default{
-
-
     components:{
-        singleComment
+        SingleComment
     },
     async created(){
         var ras =JSON.parse(sessionStorage.getItem("userData"))
-        var res = (await getCommentByIdAndType(ras.userId,ras.userType)).funData
+        var res = (await GetCommentByIdAndType(ras.userType,ras.id)).data
         this.comments=res.data;
+        console.log("comment")
+        console.log(res)
     },
     data(){
         return{
-            coments:[],
+            comments:[],
         }
     }
 }

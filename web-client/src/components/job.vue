@@ -13,7 +13,7 @@
 import JobForm from './jobForm.vue';
 import { getAllTeamJob } from '../api/teamJobService'
 export default {
-  components: [JobForm],
+  components: {JobForm},
   async created () {
     var res = (await getAllTeamJob()).data
     console.log(res.data)

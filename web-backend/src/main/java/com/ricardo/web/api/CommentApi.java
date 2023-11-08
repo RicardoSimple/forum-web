@@ -25,7 +25,7 @@ public class CommentApi {
     }
 
     @GetMapping("/userIdAndType")
-    public Result GetCommentByIdAndType(@RequestParam("type")String type,@RequestParam("userId") Long id){
+    public Result GetCommentByIdAndType(@RequestParam("type")String type,@RequestParam("userId") String id){
         return commentService.getCommentByUserIdAndType(type,id);
     }
 

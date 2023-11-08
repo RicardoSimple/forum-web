@@ -32,7 +32,7 @@ const routes = [
     children:[
       {
         path:'/currentUser/myartical',
-        name:'artical',
+        name:'mycomment',
         component:()=> import('../account/userhomepage1_comment.vue'),
       },
       {
