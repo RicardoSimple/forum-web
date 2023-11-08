@@ -14,19 +14,19 @@
           <span style="font-size: 20px;"> <router-link
             to="/currentUser/myartical"
             style="text-decoration: none;"
-          > 发布的帖子 </router-link> </span>
+          > 帖子 </router-link> </span>
         </div></el-col>
         <el-col :span="6" v-if="this.userData.userType==='talent_user'"><div>
           <span style="font-size: 20px;"> <router-link
             to="/currentUser/myjob"
             style="text-decoration: none;"
-          > 投递的岗位 </router-link> </span>
+          > 已投岗位 </router-link> </span>
         </div></el-col>
         <el-col :span="6" v-if="this.userData.userType==='team_user'"><div>
           <span style="font-size: 20px;"> <router-link
             to="/currentUser/myCreatedjob"
             style="text-decoration: none;"
-          > 发布招聘岗位 </router-link> </span>
+          > 在招岗位 </router-link> </span>
         </div></el-col>
       </el-row>
       <el-row :gutter="20">
@@ -65,6 +65,5 @@ export default{
   }
   .row-bg {
     padding: 10px 0;
-    background-color: #f9fafc;
   }
 </style>

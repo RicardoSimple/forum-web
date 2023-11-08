@@ -1,12 +1,6 @@
 
-
 <template>
     <div>
-        <div style="text-align: right;">
-            <router-link to="/creat/artical" style="text-decoration: none;">
-                发帖
-            </router-link>
-        </div>
         <div
         v-for="comment,index in comments"
         :key="index">

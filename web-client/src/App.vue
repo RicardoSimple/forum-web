@@ -15,7 +15,7 @@
       <!-- 底部 -->
       <el-card
         class="box-card"
-        style="margin-left: 1%;background-color: #FFFFFF;width: 98%;height: 300px; margin-top: 1%;"
+        style="margin-left: 1%;background-color: #FFFFFF;width: 98%;height: 80px; margin-top: 1%;"
       >
         <XjBottom></XjBottom>
       </el-card>

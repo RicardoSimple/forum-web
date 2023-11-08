@@ -1,12 +1,21 @@
 <template>
-    <div class="user-bottom">
+    <div class="user-bottom" style="height: 60px;">
         <div class="links">
-            <ul>
-                <li>友情链接：</li>
-                <li><a href="https://cn.vuejs.org/" target="_blank">vue 官网</a></li>
-                <li><a href="https://element.eleme.cn/#/zh-CN" target="_blank">element-ui 文档地址</a></li>
-                <li><a href="https://avuejs.com/" target="_blank">avue 文档地址</a></li>
-            </ul>
+            <span>
+                <router-link to="/test/d" style="text-decoration: none;color:black;">关于我们</router-link>
+                &nbsp;
+                <router-link to="/test/d" style="text-decoration: none;color:black;">加入我们</router-link>
+                &nbsp;
+                <router-link to="/test/d" style="text-decoration: none;color:black;">意见反馈 </router-link>
+                &nbsp;
+                <router-link to="/test/d" style="text-decoration: none;color:black;">联系我们</router-link>
+                &nbsp;
+                <router-link to="/test/d" style="text-decoration: none;color:black;">免责声明</router-link>
+                &nbsp;
+                <router-link to="/test/d" style="text-decoration: none;color:black;">友情链接</router-link>
+                &nbsp;
+                <router-link to="/test/c" style="text-decoration: none;color:black;">资源导航</router-link>
+                </span>
         </div>
         
     </div>
@@ -26,6 +35,16 @@
     /*    bottom: 0;*/
     /*    left: 40%;*/
     /*}*/
-
-    li{list-style-type:none;}
+    a.links{
+        text-align: center;
+        color: black;
+        text-decoration: none;
+        list-style-type: none;
+    }
+    div.links{
+        height: 10px;
+    }
+    li{list-style-type:none;
+        text-decoration: none;
+    }
 </style>

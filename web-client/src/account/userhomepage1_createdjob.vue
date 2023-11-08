@@ -1,7 +1,7 @@
 <template>
     <div>
         <div style="text-align: right;">
-        <router-link to="/creat/artical">
+        <router-link to="/creat/artical" style="text-decoration: none;">
                 发布招聘信息
             </router-link>
         </div>

@@ -3,13 +3,13 @@
     <el-row :gutter="20">
       <el-col :span="6"><div>
         <span style="font-size: 20px;"> <router-link
-          to="/home/userhomepage1"
-        > 发布的帖子 </router-link> </span>
+          to="/user/:id/artical"
+        >  帖子</router-link> </span>
       </div></el-col>
       <el-col :span="6"><div class="grid-content bg-purple">
         <span style="font-size: 20px;"> <router-link
           to="/home/userhomepage2"
-        > 投递的岗位 </router-link> </span>
+        > 帖子 </router-link> </span>
       </div></el-col>
     </el-row>
     <el-row :gutter="20">
